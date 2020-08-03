@@ -16,6 +16,7 @@ public class HelloWorldController {
 
     @GetMapping("/api/v1/hello/world")
     public Object get(){
+        System.out.println("got here");
         return service.getHello();
     }
 }

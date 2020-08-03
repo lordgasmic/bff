@@ -13,6 +13,7 @@ public class HelloWorldService {
     }
 
     public Object getHello(){
+        System.out.println("got to service");
         return client.getHello();
     }
 }

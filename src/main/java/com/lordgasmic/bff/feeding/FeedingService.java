@@ -3,6 +3,8 @@ package com.lordgasmic.bff.feeding;
 import com.lordgasmic.bff.models.FeedRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FeedingService {
 
@@ -14,5 +16,9 @@ public class FeedingService {
 
     public Object putFeed(FeedRequest request){
         return client.putFeed(request);
+    }
+
+    public Object putFeeds(List<FeedRequest> requests){
+        return client.putFeeds(requests);
     }
 }

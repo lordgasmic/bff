@@ -1,4 +1,4 @@
-package com.lordgasmic.bff.models;
+package com.lordgasmic.bff.feeding.model;
 
 public enum UnitOfMeasure {
     ml, oz;

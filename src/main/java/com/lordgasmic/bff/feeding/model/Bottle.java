@@ -1,13 +1,10 @@
-package com.lordgasmic.bff.models;
+package com.lordgasmic.bff.feeding.model;
 
 import lombok.Data;
 
 @Data
-public class FeedRequest {
-    private String date;
-    private int timeHour;
-    private int timeMinute;
-    private Meridiem meridiem;
+public class Bottle {
+    private int ordinal;
     private int given;
     private int quantity;
     private UnitOfMeasure givenUom;

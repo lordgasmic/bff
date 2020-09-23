@@ -1,6 +1,6 @@
 package com.lordgasmic.bff.feeding;
 
-import com.lordgasmic.bff.models.FeedRequest;
+import com.lordgasmic.bff.feeding.model.FeedRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

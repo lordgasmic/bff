@@ -10,5 +10,7 @@ public class Bottle {
     private UnitOfMeasure givenUom;
     private UnitOfMeasure quantityUom;
     private boolean vitamin;
+    private boolean probiotic;
+    private boolean gas;
     private String note;
 }

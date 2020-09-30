@@ -21,4 +21,8 @@ public class FeedingService {
     public Object putFeeds(List<FeedRequest> requests){
         return client.putFeeds(requests);
     }
+
+    public Object getFeeds() {
+        return client.getFeeds();
+    }
 }

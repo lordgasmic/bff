@@ -22,8 +22,8 @@ public class RedisHttpSessionConfiguration {
 
     @Bean
     @Primary
-    public RedisIndexedSessionRepository sessionRepository() {
-        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
+    public RedisOperationsSessionRepository sessionRepository() {
+        final RedisOperationsSessionRepository sessionRepository = new RedisOperationsSessionRepository(redisTemplate);
         sessionRepository.setDefaultMaxInactiveInterval(5400);
         sessionRepository.setRedisKeyNamespace("webbff");
         return sessionRepository;

@@ -17,7 +17,6 @@ public class LordgasmicCorsConfiguration {
         corsConfiguration.applyPermitDefaultValues();
         corsConfiguration.addAllowedMethod("PUT");
         corsConfiguration.addAllowedMethod("DELETE");
-        corsConfiguration.addAllowedMethod("OPTIONS");
         corsConfiguration.setAllowedOrigins(Arrays.asList("https://lordgasmic.com", "http://localhost:4200"));
 
         final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();

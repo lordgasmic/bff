@@ -2,32 +2,11 @@ package com.lordgasmic.bff.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.session.data.redis.RedisIndexedSessionRepository;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
-import org.springframework.session.data.redis.config.annotation.web.server.EnableRedisWebSession;
 import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 @Configuration
-@EnableRedisWebSession
 public class RedisHttpSessionConfiguration {
-
-    private final RedisTemplate redisTemplate;
-
-    public RedisHttpSessionConfiguration(final RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
-
-    @Bean
-    @Primary
-    public RedisOperationsSessionRepository sessionRepository() {
-        final RedisOperationsSessionRepository sessionRepository = new RedisOperationsSessionRepository(redisTemplate);
-        sessionRepository.setDefaultMaxInactiveInterval(5400);
-        sessionRepository.setRedisKeyNamespace("webbff");
-        return sessionRepository;
-    }
 
     @Bean
     public CookieSerializer cookieSerializer() {

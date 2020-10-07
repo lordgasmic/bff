@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.logging.Logger;
 
 @Slf4j
 @Component
@@ -14,6 +16,9 @@ public class SessionManager {
     private HttpServletRequest httpServletRequest;
 
     public void getSessionDetails(){
-        httpServletRequest.getSession().getAttributeNames().asIterator().forEachRemaining(System.out::println);
+        Enumeration<String> attrs = httpServletRequest.getSession().getAttributeNames();
+        while(attrs.hasMoreElements()) {
+            log.info(attrs.nextElement());
+        }
     }
 }

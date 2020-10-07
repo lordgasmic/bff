@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
+import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.server.EnableRedisWebSession;
 import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
@@ -21,8 +22,8 @@ public class RedisHttpSessionConfiguration {
 
     @Bean
     @Primary
-    public RedisIndexedSessionRepository sessionRepository() {
-        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
+    public RedisOperationsSessionRepository sessionRepository() {
+        final RedisOperationsSessionRepository sessionRepository = new RedisOperationsSessionRepository(redisTemplate);
         sessionRepository.setDefaultMaxInactiveInterval(5400);
         sessionRepository.setRedisKeyNamespace("webbff");
         return sessionRepository;

@@ -16,11 +16,11 @@ public class SessionManager {
     private HttpServletRequest httpServletRequest;
 
     public void getSessionDetails(){
-        log.debug("getSessionDetails begin");
+        log.info("getSessionDetails begin");
         Enumeration<String> attrs = httpServletRequest.getSession().getAttributeNames();
         while(attrs.hasMoreElements()) {
             log.info(attrs.nextElement());
         }
-        log.debug("getSessionDetails end");
+        log.info("getSessionDetails end");
     }
 }

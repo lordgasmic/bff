@@ -21,6 +21,13 @@ public class SessionManager {
         while(attrs.hasMoreElements()) {
             log.info(attrs.nextElement());
         }
+        if (!attrs.hasMoreElements()) {
+            save();
+        }
         log.info("getSessionDetails end");
+    }
+
+    public void save() {
+        httpServletRequest.getSession().setAttribute("derp", "derp-true");
     }
 }

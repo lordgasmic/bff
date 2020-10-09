@@ -15,19 +15,19 @@ public class SessionManager {
     @Autowired
     private HttpServletRequest httpServletRequest;
 
-    public void getSessionDetails(){
+    public void getSessionDetails(int id){
         log.info("getSessionDetails begin");
         Enumeration<String> attrs = httpServletRequest.getSession().getAttributeNames();
         while(attrs.hasMoreElements()) {
             log.info(attrs.nextElement());
         }
         if (!attrs.hasMoreElements()) {
-            save();
+            save(id);
         }
         log.info("getSessionDetails end");
     }
 
-    public void save() {
-        httpServletRequest.getSession().setAttribute("derp", "derp-true");
+    public void save(int id) {
+        httpServletRequest.getSession().setAttribute("derp", "derp-true:" + id);
     }
 }

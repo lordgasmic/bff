@@ -3,6 +3,7 @@ package com.lordgasmic.bff.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
@@ -23,17 +24,17 @@ public class RedisHttpSessionConfiguration {
     }
     @Bean
     public LettuceConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory();
+        return new LettuceConnectionFactory(new RedisStandaloneConfiguration("redis", 6379));
     }
 
-    @Bean
-    @Primary
-    public RedisIndexedSessionRepository sessionRepository() {
-        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
-        sessionRepository.setDefaultMaxInactiveInterval(5400);
-        sessionRepository.setRedisKeyNamespace("webbff");
-        return sessionRepository;
-    }
+//    @Bean
+//    @Primary
+//    public RedisIndexedSessionRepository sessionRepository() {
+//        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
+//        sessionRepository.setDefaultMaxInactiveInterval(5400);
+//        sessionRepository.setRedisKeyNamespace("webbff");
+//        return sessionRepository;
+//    }
 
     @Bean
     public CookieSerializer cookieSerializer() {

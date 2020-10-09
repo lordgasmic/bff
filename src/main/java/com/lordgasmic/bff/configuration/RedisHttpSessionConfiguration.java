@@ -32,13 +32,9 @@ public class RedisHttpSessionConfiguration {
     }
 
     @Bean
-    public StringRedisSerializer stringRedisSerializer() {
-        return new StringRedisSerializer();
-    }
-
-    @Bean
     @Primary
     public RedisIndexedSessionRepository sessionRepository() {
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
         final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
         sessionRepository.setDefaultMaxInactiveInterval(5400);
         sessionRepository.setRedisKeyNamespace("webbff");

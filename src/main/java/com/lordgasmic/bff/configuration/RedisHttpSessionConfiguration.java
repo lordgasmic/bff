@@ -30,14 +30,14 @@ public class RedisHttpSessionConfiguration {
         return new LettuceConnectionFactory(new RedisStandaloneConfiguration("redis", 6379));
     }
 
-//    @Bean
-//    @Primary
-//    public RedisIndexedSessionRepository sessionRepository() {
-//        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
-//        sessionRepository.setDefaultMaxInactiveInterval(5400);
-//        sessionRepository.setRedisKeyNamespace("webbff");
-//        return sessionRepository;
-//    }
+    @Bean
+    @Primary
+    public RedisIndexedSessionRepository sessionRepository() {
+        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
+        sessionRepository.setDefaultMaxInactiveInterval(5400);
+        sessionRepository.setRedisKeyNamespace("webbff");
+        return sessionRepository;
+    }
 
     @Bean
     public CookieSerializer cookieSerializer() {

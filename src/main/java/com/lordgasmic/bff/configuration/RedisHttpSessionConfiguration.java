@@ -12,7 +12,7 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 @Configuration
-//@EnableRedisHttpSession
+@EnableRedisHttpSession
 public class RedisHttpSessionConfiguration {
 
 //    private final RedisTemplate redisTemplate;

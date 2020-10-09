@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
 import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
@@ -28,6 +29,11 @@ public class RedisHttpSessionConfiguration {
     @Bean
     public LettuceConnectionFactory connectionFactory() {
         return new LettuceConnectionFactory(new RedisStandaloneConfiguration("redis", 6379));
+    }
+
+    @Bean
+    public StringRedisSerializer stringRedisSerializer() {
+        return new StringRedisSerializer();
     }
 
     @Bean

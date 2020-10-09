@@ -15,20 +15,20 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
 @EnableRedisHttpSession
 public class RedisHttpSessionConfiguration {
 
-//    private final RedisTemplate redisTemplate;
-//
-//    public RedisHttpSessionConfiguration(final RedisTemplate redisTemplate) {
-//        this.redisTemplate = redisTemplate;
-//    }
-//
-//    @Bean
-//    @Primary
-//    public RedisIndexedSessionRepository sessionRepository() {
-//        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
-//        sessionRepository.setDefaultMaxInactiveInterval(5400);
-//        sessionRepository.setRedisKeyNamespace("webbff");
-//        return sessionRepository;
-//    }
+    private final RedisTemplate redisTemplate;
+
+    public RedisHttpSessionConfiguration(final RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
+    @Bean
+    @Primary
+    public RedisIndexedSessionRepository sessionRepository() {
+        final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
+        sessionRepository.setDefaultMaxInactiveInterval(5400);
+        sessionRepository.setRedisKeyNamespace("webbff");
+        return sessionRepository;
+    }
 
     @Bean
     public CookieSerializer cookieSerializer() {

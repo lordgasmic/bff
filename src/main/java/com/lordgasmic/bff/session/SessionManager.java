@@ -19,7 +19,11 @@ public class SessionManager {
         log.info("getSessionDetails begin");
         Enumeration<String> attrs = httpServletRequest.getSession().getAttributeNames();
         while(attrs.hasMoreElements()) {
-            log.info(attrs.nextElement());
+            String key = attrs.nextElement();
+            log.info(key);
+            if (key.equals("derp")){
+                httpServletRequest.changeSessionId();
+            }
         }
         if (!attrs.hasMoreElements()) {
             save(id);

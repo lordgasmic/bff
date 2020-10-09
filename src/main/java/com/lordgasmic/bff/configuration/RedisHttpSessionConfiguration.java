@@ -22,10 +22,6 @@ public class RedisHttpSessionConfiguration {
     @Autowired
     private RedisTemplate redisTemplate;
 
-//    public RedisHttpSessionConfiguration(final RedisTemplate redisTemplate) {
-//        this.redisTemplate = redisTemplate;
-//    }
-
     @Bean
     public LettuceConnectionFactory connectionFactory() {
         return new LettuceConnectionFactory(new RedisStandaloneConfiguration("redis", 6379));

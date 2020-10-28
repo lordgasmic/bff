@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
-import java.util.logging.Logger;
 
 @Slf4j
 @Component
@@ -16,7 +15,6 @@ public class SessionManager {
     private HttpServletRequest httpServletRequest;
 
     public void getSessionDetails(int id){
-        log.info("getSessionDetails begin");
         Enumeration<String> attrs = httpServletRequest.getSession().getAttributeNames();
         while(attrs.hasMoreElements()) {
             String key = attrs.nextElement();
@@ -28,7 +26,12 @@ public class SessionManager {
         if (!attrs.hasMoreElements()) {
             save(id);
         }
-        log.info("getSessionDetails end");
+    }
+
+    public void login(int id) {
+        httpServletRequest.getSession().invalidate();
+        httpServletRequest.changeSessionId();
+        httpServletRequest.getSession().setAttribute("login", true);
     }
 
     public void save(int id) {

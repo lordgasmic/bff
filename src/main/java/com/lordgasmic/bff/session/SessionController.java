@@ -18,8 +18,8 @@ public class SessionController {
         sessionManager.getSessionDetails(id);
     }
 
-    @GetMapping("/api/v1/sessionlogin")
-    public void login(@PathVariable int id) {
-        sessionManager.login(id);
-    }
+//    @GetMapping("/api/v1/sessionlogin")
+//    public void login(@PathVariable int id) {
+//        sessionManager.login(id);
+//    }
 }

@@ -20,18 +20,13 @@ public class SessionManager {
             String key = attrs.nextElement();
             log.info(key);
             if (key.equals("derp")){
+                httpServletRequest.getSession().invalidate();
                 httpServletRequest.changeSessionId();
             }
         }
         if (!attrs.hasMoreElements()) {
             save(id);
         }
-    }
-
-    public void login(int id) {
-        httpServletRequest.getSession().invalidate();
-        httpServletRequest.changeSessionId();
-        httpServletRequest.getSession().setAttribute("login", true);
     }
 
     public void save(int id) {

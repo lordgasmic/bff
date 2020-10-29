@@ -1,4 +1,18 @@
 package com.lordgasmic.bff.session.model;
 
-public class SessionDetails {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class SessionDetails implements Serializable {
+    private int id;
+    private String username;
+    private int roles;
 }

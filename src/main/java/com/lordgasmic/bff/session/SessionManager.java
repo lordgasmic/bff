@@ -20,7 +20,8 @@ public class SessionManager {
             String key = attrs.nextElement();
             log.info(key);
             if (key.equals("derp")){
-                httpServletRequest.getSession().invalidate();
+                httpServletRequest.getSession(false).invalidate();
+                httpServletRequest.getSession(true);
                 httpServletRequest.changeSessionId();
             }
         }

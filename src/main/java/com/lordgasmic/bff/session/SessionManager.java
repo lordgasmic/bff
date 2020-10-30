@@ -20,7 +20,7 @@ public class SessionManager {
     }
 
     public void handleLogin(SessionDetails sessionDetails) {
-        httpServletRequest.getSession(false).invalidate();
+        httpServletRequest.getSession().invalidate();
         httpServletRequest.getSession(true);
         httpServletRequest.getSession().setAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME, sessionDetails);
     }

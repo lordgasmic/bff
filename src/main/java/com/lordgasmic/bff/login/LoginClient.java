@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.login;
 
 import com.lordgasmic.bff.login.model.LoginRequest;
+import com.lordgasmic.bff.login.model.LoginResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.PutMapping;
 public interface LoginClient {
 
     @PutMapping(value="/api/v1/login", headers = {""})
-    Object login(LoginRequest request);
+    LoginResponse login(LoginRequest request);
 }

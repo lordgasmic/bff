@@ -1,14 +1,12 @@
 package com.lordgasmic.bff.session.model;
 
-import com.lordgasmic.bff.login.model.UserInfo;
-import com.lordgasmic.bff.session.SessionManager;
+import com.lordgasmic.bff.login.model.LoginResponse;
 
 public class SessionDetailsMapper {
-    public static SessionDetails fromUserInfo(UserInfo userInfo) {
+    public static SessionDetails fromLoginResponse(LoginResponse response) {
         return SessionDetails.builder()
-                             .id(userInfo.getId())
-                             .roles(userInfo.getRoles())
-                             .username(userInfo.getUsername())
+                             .roles(response.getRoles())
+                             .username(response.getUsername())
                              .build();
     }
 }

@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.session;
 
+import com.lordgasmic.bff.session.model.SessionDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +15,7 @@ public class SessionController {
     private SessionManager sessionManager;
 
     @GetMapping("/api/v1/session/{id}")
-    public void getSessionInfo(@PathVariable int id) {
-        sessionManager.getSessionDetails(id);
+    public SessionDetails getSessionInfo(@PathVariable int id) {
+        return sessionManager.getSessionDetails(id);
     }
-
-//    @GetMapping("/api/v1/sessionlogin")
-//    public void login(@PathVariable int id) {
-//        sessionManager.login(id);
-//    }
 }

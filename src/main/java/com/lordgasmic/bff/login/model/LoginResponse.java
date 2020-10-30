@@ -3,9 +3,9 @@ package com.lordgasmic.bff.login.model;
 import lombok.Data;
 
 @Data
-public class UserInfo {
-    private int id;
+public class LoginResponse {
     private String username;
     private int roles;
-    private boolean loggedIn;
+    private boolean enabled;
+    private boolean credentialsValid;
 }

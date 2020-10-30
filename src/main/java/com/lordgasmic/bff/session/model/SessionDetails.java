@@ -12,7 +12,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class SessionDetails implements Serializable {
-    private int id;
     private String username;
     private int roles;
 }

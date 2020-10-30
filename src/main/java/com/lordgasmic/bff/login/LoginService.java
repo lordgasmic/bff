@@ -1,7 +1,7 @@
 package com.lordgasmic.bff.login;
 
 import com.lordgasmic.bff.login.model.LoginRequest;
-import com.lordgasmic.bff.login.model.UserInfo;
+import com.lordgasmic.bff.login.model.LoginResponse;
 import com.lordgasmic.bff.session.SessionManager;
 import com.lordgasmic.bff.session.model.SessionDetails;
 import com.lordgasmic.bff.session.model.SessionDetailsMapper;
@@ -19,10 +19,10 @@ public class LoginService {
     }
 
     public Object login(LoginRequest request){
-        UserInfo userInfo = (UserInfo) client.login(request);
+        LoginResponse response = client.login(request);
 
-        if (userInfo.isLoggedIn()) {
-            SessionDetails sessionDetails = SessionDetailsMapper.fromUserInfo(userInfo);
+        if (response.isCredentialsValid() && response.isEnabled()) {
+            SessionDetails sessionDetails = SessionDetailsMapper.fromLoginResponse(response);
             sessionManager.handleLogin(sessionDetails);
             return sessionDetails;
         }

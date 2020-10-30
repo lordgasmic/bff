@@ -42,6 +42,8 @@ public class RedisHttpSessionConfiguration {
         final DefaultCookieSerializer serializer = new DefaultCookieSerializer();
         serializer.setCookieName("LORDGAMICEWEB");
         serializer.setDomainName("lordgasmic.com");
+        serializer.setUseHttpOnlyCookie(true);
+        serializer.setUseSecureCookie(true);
         return serializer;
     }
 }

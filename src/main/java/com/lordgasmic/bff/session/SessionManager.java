@@ -15,7 +15,7 @@ public class SessionManager {
     @Autowired
     private HttpServletRequest httpServletRequest;
 
-    public SessionDetails getSessionDetails(int id){
+    public SessionDetails getSessionDetails(){
         return (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
     }
 

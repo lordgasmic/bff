@@ -14,8 +14,8 @@ public class SessionController {
     @Autowired
     private SessionManager sessionManager;
 
-    @GetMapping("/api/v1/session/{id}")
-    public SessionDetails getSessionInfo(@PathVariable int id) {
-        return sessionManager.getSessionDetails(id);
+    @GetMapping("/api/v1/session")
+    public SessionDetails getSessionInfo() {
+        return sessionManager.getSessionDetails();
     }
 }

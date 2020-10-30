@@ -15,7 +15,7 @@ public class LordgasmicExceptionHandler {
 
     @ExceptionHandler(DerpException.class)
     public ResponseEntity<String> derp() throws URISyntaxException {
-        return ResponseEntity.status(303).location(new URI("/api/v1/derp")).build();
+        return ResponseEntity.status(401).location(new URI("/login")).build();
     }
 
     @ExceptionHandler(Exception.class)

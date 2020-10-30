@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.session;
 
 import com.lordgasmic.bff.configuration.LordgasmicConstants;
+import com.lordgasmic.bff.configuration.errorhandling.model.DerpException;
 import com.lordgasmic.bff.session.model.SessionDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,13 @@ public class SessionManager {
     private HttpServletRequest httpServletRequest;
 
     public SessionDetails getSessionDetails(){
-        return (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
+        SessionDetails details = (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
+
+        if (details == null) {
+            throw new DerpException();
+        }
+
+        return details;
     }
 
     public void handleLogin(SessionDetails sessionDetails) {

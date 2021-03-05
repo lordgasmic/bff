@@ -32,6 +32,12 @@ public class SessionManager {
         httpServletRequest.getSession().setAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME, sessionDetails);
     }
 
+    public void handleLogout() {
+        httpServletRequest.getSession().removeAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
+        httpServletRequest.getSession().invalidate();
+        httpServletRequest.getSession(true);
+    }
+
     public void save(int id) {
         httpServletRequest.getSession().setAttribute("derp", "derp-true:" + id);
     }

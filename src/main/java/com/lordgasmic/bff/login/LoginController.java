@@ -18,4 +18,9 @@ public class LoginController {
     public Object login(@RequestBody LoginRequest request){
         return service.login(request);
     }
+
+    @GetMapping("/api/v1/logout")
+    public void logout(){
+        service.logout();
+    }
 }

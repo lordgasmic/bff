@@ -29,4 +29,8 @@ public class LoginService {
 
         return null;
     }
+
+    public void logout() {
+        sessionManager.handleLogout();
+    }
 }

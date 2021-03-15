@@ -25,6 +25,9 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         SessionDetails details = sessionManager.getSessionDetails();
+        if (details == null) {
+            return false;
+        }
         log.info("session details", details);
         return details.getUsername() != null && Role.hasRole(Role.user, details.getRoles());
     }

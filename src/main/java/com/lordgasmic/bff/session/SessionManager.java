@@ -17,13 +17,7 @@ public class SessionManager {
     private HttpServletRequest httpServletRequest;
 
     public SessionDetails getSessionDetails(){
-        SessionDetails details = (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
-
-        if (details == null) {
-            throw new DerpException();
-        }
-
-        return details;
+        return (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
     }
 
     public void handleLogin(SessionDetails sessionDetails) {

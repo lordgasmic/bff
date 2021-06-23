@@ -1,7 +1,6 @@
 package com.lordgasmic.bff.meme;
 
 import com.lordgasmic.bff.meme.model.CreateMemeRequest;
-import com.lordgasmic.bff.meme.model.MemeRequest;
 import com.lordgasmic.bff.meme.model.MemeRequestRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +23,7 @@ public class MemeController {
     }
 
     @GetMapping("/api/v1/memes/tag/{tag}")
-    public Object getMemes(@RequestParam String tag){
+    public Object getMemes(@PathVariable String tag){
         log.info("staring memes by tag");
         return service.getMemes(tag);
     }

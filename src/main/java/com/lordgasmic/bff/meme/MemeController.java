@@ -23,9 +23,7 @@ public class MemeController {
 
     @GetMapping("/api/v1/memes/tag/$1")
     public Object getMemes(@RequestParam String tag){
-        MemeRequest request = new MemeRequest();
-        request.setTag(tag);
-        return service.getMemes(request);
+        return service.getMemes(tag);
     }
 
     @PutMapping("/api/v1/meme")

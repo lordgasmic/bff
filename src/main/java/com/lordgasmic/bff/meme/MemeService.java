@@ -21,8 +21,8 @@ public class MemeService {
         return client.getAllMemes();
     }
 
-    public List<MemeResponse> getMemes(MemeRequest request) {
-        return client.getMemes(request);
+    public List<MemeResponse> getMemes(String tag) {
+        return client.getMemes(tag);
     }
 
     public void addMeme(CreateMemeRequest request) {

@@ -16,8 +16,8 @@ public interface MemeClient {
     @GetMapping(value="/api/v1/memes/all", headers = {""})
     List<MemeResponse> getAllMemes();
 
-    @GetMapping(value="/api/v1/memes/tag", headers = {""})
-    List<MemeResponse> getMemes(MemeRequest request);
+    @GetMapping(value="/api/v1/memes/tag/{tag}", headers = {""})
+    List<MemeResponse> getMemes(String tag);
 
     @PutMapping(value = "/api/v1/meme", headers = {""})
     Object addMeme(CreateMemeRequest request);

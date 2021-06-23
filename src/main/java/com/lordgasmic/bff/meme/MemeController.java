@@ -23,7 +23,7 @@ public class MemeController {
         return service.getAllMemes();
     }
 
-    @GetMapping("/api/v1/memes/tag/$1")
+    @GetMapping("/api/v1/memes/tag/{tag}")
     public Object getMemes(@RequestParam String tag){
         log.info("staring memes by tag");
         return service.getMemes(tag);

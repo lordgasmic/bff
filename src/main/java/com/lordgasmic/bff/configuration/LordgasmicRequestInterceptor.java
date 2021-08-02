@@ -27,7 +27,6 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         SessionDetails details = sessionManager.getSessionDetails();
         if (details == null) {
             response.setStatus(401);
-            response.setHeader("x-derp", "derp");
             return false;
         }
         log.info("session details {}", details);

@@ -22,14 +22,5 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: list
-        run: ls -la
-
-  docker:
-    needs: maven
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build the Docker image
-        run: ls -la
-        #docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Build with Docker
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

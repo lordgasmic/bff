@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableFeignClients
 public class BffApplication {
     private static final Logger logger = LoggerFactory.getLogger(BffApplication.class);
-    
+
     public static void main(final String[] args) {
         SpringApplication.run(BffApplication.class, args);
     }
@@ -28,7 +28,7 @@ public class BffApplication {
     public WebMvcConfigurer adapter() {
         return new WebMvcConfigurer() {
             @Override
-            public void addInterceptors(InterceptorRegistry registry) {
+            public void addInterceptors(final InterceptorRegistry registry) {
                 registry.addInterceptor(bffRequestInterceptor());
             }
         };

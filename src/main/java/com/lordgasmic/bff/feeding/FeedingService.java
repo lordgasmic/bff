@@ -10,15 +10,15 @@ public class FeedingService {
 
     private final FeedingClient client;
 
-    public FeedingService(final FeedingClient client){
+    public FeedingService(final FeedingClient client) {
         this.client = client;
     }
 
-    public Object putFeed(FeedRequest request){
+    public Object putFeed(final FeedRequest request) {
         return client.putFeed(request);
     }
 
-    public Object putFeeds(List<FeedRequest> requests){
+    public Object putFeeds(final List<FeedRequest> requests) {
         return client.putFeeds(requests);
     }
 

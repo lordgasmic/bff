@@ -17,14 +17,14 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
     private SessionManager sessionManager;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+    public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler) {
         log.info("starting preHandle");
-        if (request.getServletPath().contains("api/v1/login")){
+        if (request.getServletPath().contains("api/v1/login")) {
             log.info("login handler found");
             return true;
         }
 
-        SessionDetails details = sessionManager.getSessionDetails();
+        final SessionDetails details = sessionManager.getSessionDetails();
         if (details == null) {
             response.setStatus(401);
             return false;

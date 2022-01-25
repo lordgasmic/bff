@@ -15,17 +15,17 @@ public class FeedingController {
 
     private final FeedingService service;
 
-    public FeedingController(final FeedingService service){
+    public FeedingController(final FeedingService service) {
         this.service = service;
     }
 
     @PutMapping("/api/v2/feed")
-    public Object putFeed(@RequestBody FeedRequest request){
+    public Object putFeed(@RequestBody final FeedRequest request) {
         return service.putFeed(request);
     }
 
     @PutMapping("/api/v2/feeds")
-    public Object putFeeds(@RequestBody List<FeedRequest> requests){
+    public Object putFeeds(@RequestBody final List<FeedRequest> requests) {
         return service.putFeeds(requests);
     }
 

@@ -10,12 +10,12 @@ public class ComicController {
 
     private final ComicService service;
 
-    public ComicController(final ComicService service){
+    public ComicController(final ComicService service) {
         this.service = service;
     }
 
     @GetMapping("/api/v1/comic/derp")
-    public Object getComic(){
+    public Object getComic() {
         return service.getComic();
     }
 }

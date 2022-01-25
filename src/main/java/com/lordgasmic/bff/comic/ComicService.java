@@ -7,11 +7,11 @@ public class ComicService {
 
     private final ComicClient client;
 
-    public ComicService(final ComicClient client){
+    public ComicService(final ComicClient client) {
         this.client = client;
     }
 
-    public Object getComic(){
+    public Object getComic() {
         return client.getComic();
     }
 }

@@ -19,9 +19,8 @@ public class LordgasmicExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Exception> catchAll(Exception exception) {
+    public ResponseEntity<Exception> catchAll(final Exception exception) {
         log.error("LGC-: There was a general error", exception);
-        return ResponseEntity.status(220)
-                             .body(exception);
+        return ResponseEntity.status(220).body(exception);
     }
 }

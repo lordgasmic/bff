@@ -10,12 +10,12 @@ public class HelloWorldController {
 
     private final HelloWorldService service;
 
-    public HelloWorldController(final HelloWorldService service){
+    public HelloWorldController(final HelloWorldService service) {
         this.service = service;
     }
 
     @GetMapping("/api/v1/hello/world")
-    public Object get(){
+    public Object get() {
         System.out.println("got here");
         return service.getHello();
     }

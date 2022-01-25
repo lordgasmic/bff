@@ -13,16 +13,16 @@ public class LoginService {
     private final LoginClient client;
     private final SessionManager sessionManager;
 
-    public LoginService(final LoginClient client, SessionManager sessionManager){
+    public LoginService(final LoginClient client, final SessionManager sessionManager) {
         this.client = client;
         this.sessionManager = sessionManager;
     }
 
-    public Object login(LoginRequest request){
-        LoginResponse response = client.login(request);
+    public Object login(final LoginRequest request) {
+        final LoginResponse response = client.login(request);
 
         if (response.isCredentialsValid() && response.isEnabled()) {
-            SessionDetails sessionDetails = SessionDetailsMapper.fromLoginResponse(response);
+            final SessionDetails sessionDetails = SessionDetailsMapper.fromLoginResponse(response);
             sessionManager.handleLogin(sessionDetails);
             return sessionDetails;
         }

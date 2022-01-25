@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient(name="meme-client", url = "${meme-service.url}")
+@FeignClient(name = "meme-client", url = "${meme-service.url}")
 public interface MemeClient {
 
-    @GetMapping(value="/api/v1/memes/all", headers = {""})
+    @GetMapping(value = "/api/v1/memes/all", headers = {""})
     List<MemeResponse> getAllMemes();
 
-    @GetMapping(value="/api/v1/memes/tag/{tag}", headers = {""})
+    @GetMapping(value = "/api/v1/memes/tag/{tag}", headers = {""})
     List<MemeResponse> getMemes(@PathVariable("tag") String tag);
 
     @PutMapping(value = "/api/v1/meme", headers = {""})

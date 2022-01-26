@@ -16,4 +16,9 @@ public class CollectionService {
     public List<Object> getWineries() {
         return client.getWineries();
     }
+
+    public Object getWineryById(final String id) {
+        return client.getWineryById(id);
+    }
+
 }

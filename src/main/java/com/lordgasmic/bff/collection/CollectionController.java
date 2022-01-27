@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -30,8 +29,7 @@ public class CollectionController {
     }
 
     @GetMapping("/api/v1/wines")
-    public Object getWines(@RequestParam("wineId") final Optional<String> wineId, @RequestParam("wineryId") final Optional<String> wineryId) {
-        log.info("wineid: " + wineId.get());
+    public Object getWines(@RequestParam("wineId") final String wineId, @RequestParam("wineryId") final String wineryId) {
         return service.getWines(wineId, wineryId);
     }
 }

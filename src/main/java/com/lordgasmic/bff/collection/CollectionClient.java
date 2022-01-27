@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Optional;
 
 @FeignClient(name = "collection-client", url = "${collection-service.url}")
 public interface CollectionClient {
@@ -18,5 +17,5 @@ public interface CollectionClient {
     Object getWineryById(@PathVariable("id") String id);
 
     @GetMapping(value = "/api/v1/wines", headers = {""})
-    Object getWines(@RequestParam("wineId") Optional<String> wineId, @RequestParam("wineryId") Optional<String> wineryId);
+    Object getWines(@RequestParam("wineId") String wineId, @RequestParam("wineryId") String wineryId);
 }

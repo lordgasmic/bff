@@ -18,5 +18,5 @@ public interface CollectionClient {
     Object getWineryById(@PathVariable("id") String id);
 
     @GetMapping(value = "/api/v1/wines", headers = {""})
-    Object getWines(@RequestParam Optional<String> wineId, Optional<String> wineryId);
+    Object getWines(@RequestParam("wineId") Optional<String> wineId, @RequestParam("wineryId") Optional<String> wineryId);
 }

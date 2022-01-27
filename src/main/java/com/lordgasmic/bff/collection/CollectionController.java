@@ -30,7 +30,8 @@ public class CollectionController {
     }
 
     @GetMapping("/api/v1/wines")
-    public Object getWines(@RequestParam final Optional<String> wineId, final Optional<String> wineryId) {
+    public Object getWines(@RequestParam("wineId") final Optional<String> wineId, @RequestParam("wineryId") final Optional<String> wineryId) {
+        log.info("wineid: " + wineId.get());
         return service.getWines(wineId, wineryId);
     }
 }

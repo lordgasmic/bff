@@ -19,9 +19,9 @@ public interface CollectionClient {
     @GetMapping(value = "/api/v1/wines", headers = {""})
     Object getWines(@RequestParam("wineId") String wineId, @RequestParam("wineryId") String wineryId);
 
-    @GetMapping(value = "/api/v1/wines", headers = {""})
+    @GetMapping(value = "/api/v1/wineNotes", headers = {""})
     Object getWineNotes(@RequestParam("user") String user, @RequestParam("wineId") Integer wineID);
 
-    @GetMapping(value = "/api/v1/wines", headers = {""})
+    @GetMapping(value = "/api/v1/wineRating", headers = {""})
     Object getWineRating(@RequestParam("user") String user, @RequestParam("wineId") Integer wineId);
 }

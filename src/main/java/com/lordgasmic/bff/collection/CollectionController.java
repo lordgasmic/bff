@@ -31,7 +31,16 @@ public class CollectionController {
 
     @GetMapping("/api/v1/wines")
     public Object getWines(@RequestParam("wineId") final Optional<String> wineId, @RequestParam("wineryId") final Optional<String> wineryId) {
-
         return service.getWines(wineId.orElse(null), wineryId.orElse(null));
+    }
+
+    @GetMapping("/api/v1/wineNotes")
+    public Object getWineNotes(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
+        return service.getWineNotes(user.orElse(null), wineId.orElse(null));
+    }
+
+    @GetMapping("/api/v1/wineRating")
+    public Object getWineRating(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
+        return service.getWineRating(user.orElse(null), wineId.orElse(null));
     }
 }

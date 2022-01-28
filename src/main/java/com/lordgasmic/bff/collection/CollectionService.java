@@ -24,4 +24,12 @@ public class CollectionService {
     public Object getWines(final String wineId, final String wineryId) {
         return client.getWines(wineId, wineryId);
     }
+
+    public Object getWineNotes(final String user, final Integer wineId) {
+        return client.getWineNotes(user, wineId);
+    }
+
+    public Object getWineRating(final String user, final Integer wineId) {
+        return client.getWineRating(user, wineId);
+    }
 }

@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -60,6 +61,16 @@ public class CollectionController {
     @GetMapping("/api/v1/wineNotes")
     public Object getWineNotes(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
         return service.getWineNotes(user.orElse(null), wineId.orElse(null));
+    }
+
+    @PutMapping("/api/v1/wineNotes")
+    public Object addWineNote(@RequestBody final WineNoteRequest wineNoteRequest) {
+        return service.addWineNote(wineNoteRequest);
+    }
+
+    @PutMapping("/api/v1/wineNotes")
+    public Object addWineNote(@RequestBody final List<WineNoteRequest> wineNoteRequests) {
+        return service.addWineNotes(wineNoteRequests);
     }
 
     /*

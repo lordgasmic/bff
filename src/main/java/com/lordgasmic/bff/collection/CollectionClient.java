@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -34,4 +35,10 @@ public interface CollectionClient {
 
     @PutMapping(value = "/api/v1/wineries", headers = {""})
     Object addWinery(@RequestBody WineryRequest wineryRequest);
+
+    @PutMapping(value = "/api/v1/wineNotes", headers = {""})
+    Object addWineNote(@RequestBody WineNoteRequest wineNoteRequest);
+
+    @PutMapping(value = "/api/v1/wineNotes", headers = {""})
+    Object addWineNotes(@RequestBody List<WineNoteRequest> wineNoteRequests);
 }

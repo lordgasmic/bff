@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.collection;
 
 import com.lordgasmic.bff.collection.model.WineRequest;
+import com.lordgasmic.bff.collection.model.WineryRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,4 +31,7 @@ public interface CollectionClient {
 
     @PutMapping(value = "/api/v1/wines", headers = {""})
     Object addWine(@RequestBody WineRequest wineRequest);
+
+    @PutMapping(value = "/api/v1/wineries", headers = {""})
+    Object addWinery(@RequestBody WineryRequest wineryRequest);
 }

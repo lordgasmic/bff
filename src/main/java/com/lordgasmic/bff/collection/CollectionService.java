@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.WineRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,9 @@ public class CollectionService {
 
     public Object getWineRating(final String user, final Integer wineId) {
         return client.getWineRating(user, wineId);
+    }
+
+    public Object addWine(final WineRequest wineRequest) {
+        return client.addWine(wineRequest);
     }
 }

@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.collection;
 
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
+import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -74,5 +75,10 @@ public class CollectionController {
     @GetMapping("/api/v1/wineRating")
     public Object getWineRating(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
         return service.getWineRating(user.orElse(null), wineId.orElse(null));
+    }
+
+    @PutMapping("/api/v1/wineRating")
+    public Object addWineRating(@RequestBody final WineRatingRequest request) {
+        return service.addWineRating(request);
     }
 }

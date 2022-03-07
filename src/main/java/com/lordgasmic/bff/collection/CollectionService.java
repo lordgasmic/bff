@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.collection;
 
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
+import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,9 @@ public class CollectionService {
 
     public Object addWineNotes(final List<WineNoteRequest> wineNoteRequests) {
         return client.addWineNotes(wineNoteRequests);
+    }
+
+    public Object addWineRating(final WineRatingRequest request) {
+        return client.addWineRating(request);
     }
 }

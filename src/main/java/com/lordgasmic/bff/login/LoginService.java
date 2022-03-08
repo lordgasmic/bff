@@ -33,4 +33,8 @@ public class LoginService {
     public void logout() {
         sessionManager.handleLogout();
     }
+
+    public Object getUsersByRole(final int role) {
+        return client.getUsersByRole(role);
+    }
 }

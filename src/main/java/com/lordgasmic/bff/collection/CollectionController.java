@@ -4,6 +4,7 @@ import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
+import com.lordgasmic.bff.session.SessionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,11 @@ public class CollectionController {
 
     private final CollectionService service;
 
-    public CollectionController(final CollectionService service) {
+    private final SessionManager sessionManager;
+
+    public CollectionController(final CollectionService service, final SessionManager sessionManager) {
         this.service = service;
+        this.sessionManager = sessionManager;
     }
 
     /*
@@ -61,7 +65,7 @@ public class CollectionController {
      */
     @GetMapping("/api/v1/wineNotes")
     public Object getWineNotes(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
-        return service.getWineNotes(user.orElse(null), wineId.orElse(null));
+        return service.getWineNotes(user.orElse(sessionManager.getSessionDetails().getUsername()), wineId.orElse(null));
     }
 
     @PutMapping("/api/v1/wineNotes")
@@ -74,7 +78,7 @@ public class CollectionController {
      */
     @GetMapping("/api/v1/wineRating")
     public Object getWineRating(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
-        return service.getWineRating(user.orElse(null), wineId.orElse(null));
+        return service.getWineRating(user.orElse(sessionManager.getSessionDetails().getUsername()), wineId.orElse(null));
     }
 
     @PutMapping("/api/v1/wineRating")

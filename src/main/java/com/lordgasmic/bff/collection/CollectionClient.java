@@ -49,6 +49,6 @@ public interface CollectionClient {
     @PostMapping(value = "/api/v1/wineRating", headers = {""})
     Object getWineRatingByUsersByWineId(@RequestBody WineFriendsRequest request);
 
-    @PutMapping(value = "/api/v1/wineImages", headers = {""})
+    @PutMapping(value = "/api/v1/wineImages")
     Object addWineImage(@RequestParam("imageFile") MultipartFile wineImage);
 }

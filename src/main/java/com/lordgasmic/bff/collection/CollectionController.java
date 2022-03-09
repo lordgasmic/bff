@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.WineFriendsRequest;
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
@@ -8,6 +9,7 @@ import com.lordgasmic.bff.session.SessionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -84,5 +86,10 @@ public class CollectionController {
     @PutMapping("/api/v1/wineRating")
     public Object addWineRating(@RequestBody final WineRatingRequest request) {
         return service.addWineRating(request);
+    }
+
+    @PostMapping("/api/v1/wineRating")
+    public Object getWineRatingByUsersByWineIds(@RequestBody final WineFriendsRequest request) {
+        return service.getWineFriends(request);
     }
 }

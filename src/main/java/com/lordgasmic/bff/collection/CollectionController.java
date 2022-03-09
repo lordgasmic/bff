@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -98,7 +100,8 @@ public class CollectionController {
     Wine Image
      */
     @PutMapping("/api/v1/wineImages")
-    public Object addWineImage(@RequestParam("imageFile") final MultipartFile imageFile) {
+    public Object addWineImage(@RequestParam("imageFile") final MultipartFile imageFile, @RequestHeader final Map<String, String> headers) {
+        headers.forEach((key, value) -> log.info("key: " + key + " , value: " + value));
         return service.addWineImage(imageFile);
     }
 }

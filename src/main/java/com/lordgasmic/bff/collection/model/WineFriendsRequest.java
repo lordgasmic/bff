@@ -6,6 +6,6 @@ import java.util.List;
 
 @Data
 public class WineFriendsRequest {
-    List<String> users;
-    List<String> wineIds;
+    private List<String> users;
+    private List<Integer> wineIds;
 }

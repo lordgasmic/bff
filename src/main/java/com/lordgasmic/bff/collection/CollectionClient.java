@@ -50,5 +50,5 @@ public interface CollectionClient {
     Object getWineRatingByUsersByWineId(@RequestBody WineFriendsRequest request);
 
     @PutMapping(value = "/api/v1/wineImages", headers = {""})
-    Object addWineImage(@RequestParam("wineImage") MultipartFile wineImage);
+    Object addWineImage(@RequestParam("imageFile") MultipartFile wineImage);
 }

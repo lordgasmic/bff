@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -47,4 +48,7 @@ public interface CollectionClient {
 
     @PostMapping(value = "/api/v1/wineRating", headers = {""})
     Object getWineRatingByUsersByWineId(@RequestBody WineFriendsRequest request);
+
+    @PutMapping(value = "/api/v1/wineImages", headers = {""})
+    Object addWineImage(@RequestParam("wineImage") MultipartFile wineImage);
 }

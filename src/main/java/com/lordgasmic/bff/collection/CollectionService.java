@@ -6,6 +6,7 @@ import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -56,5 +57,9 @@ public class CollectionService {
 
     public Object getWineFriends(final WineFriendsRequest request) {
         return client.getWineRatingByUsersByWineId(request);
+    }
+
+    public Object addWineImage(final MultipartFile imageFile) {
+        return client.addWineImage(imageFile);
     }
 }

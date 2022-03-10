@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @FeignClient(name = "collection-client", url = "${collection-service.url}")
 public interface CollectionClient {
@@ -50,5 +52,5 @@ public interface CollectionClient {
     Object getWineRatingByUsersByWineId(@RequestBody WineFriendsRequest request);
 
     @PutMapping(value = "/api/v1/wineImages")
-    Object addWineImage(@RequestParam("imageFile") MultipartFile wineImage);
+    Object addWineImage(@RequestHeader Map<String, String> headers, @RequestParam("imageFile") MultipartFile wineImage);
 }

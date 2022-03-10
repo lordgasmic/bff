@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CollectionService {
@@ -60,6 +61,6 @@ public class CollectionService {
     }
 
     public Object addWineImage(final MultipartFile imageFile) {
-        return client.addWineImage(imageFile);
+        return client.addWineImage(Map.of("content-type", "multi-part/formdata"), imageFile);
     }
 }

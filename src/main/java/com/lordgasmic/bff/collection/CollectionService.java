@@ -61,6 +61,6 @@ public class CollectionService {
     }
 
     public Object addWineImage(final MultipartFile imageFile) {
-        return client.addWineImage(Map.of("content-type", "multi-part/formdata"), imageFile);
+        return client.addWineImage(Map.of("content-type", "multipart/form-data"), imageFile);
     }
 }

@@ -101,8 +101,7 @@ public class CollectionController {
      */
     @PutMapping("/api/v1/wineImages")
     public Object addWineImage(@RequestParam("imageFile") final MultipartFile imageFile, @RequestHeader final Map<String, String> headers) {
-        headers.forEach((key, value) -> log.info("key: " + key + " , value: " + value));
-
+        log.info(imageFile.getOriginalFilename());
         return service.addWineImage(headers.get("content-type"), imageFile);
     }
 }

@@ -60,7 +60,7 @@ public class CollectionService {
         return client.getWineRatingByUsersByWineId(request);
     }
 
-    public Object addWineImage(final MultipartFile imageFile) {
-        return client.addWineImage(Map.of("content-type", "multipart/form-data"), imageFile);
+    public Object addWineImage(final String contentType, final MultipartFile imageFile) {
+        return client.addWineImage(Map.of("content-type", contentType), imageFile);
     }
 }

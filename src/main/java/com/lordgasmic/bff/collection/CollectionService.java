@@ -63,4 +63,8 @@ public class CollectionService {
     public Object addWineImage(final String contentType, final MultipartFile imageFile) {
         return client.addWineImage(Map.of("content-type", contentType), imageFile);
     }
+
+    public Object getWineImages(final int wineId) {
+        return client.getWineImages(wineId);
+    }
 }

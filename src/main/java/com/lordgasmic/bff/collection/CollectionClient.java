@@ -55,4 +55,7 @@ public interface CollectionClient {
 
     @PutMapping(value = "/api/v1/wineImages", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     Object addWineImage(@RequestHeader Map<String, String> headers, @RequestPart("imageFile") MultipartFile imageFile);
+
+    @GetMapping(value = "/api/v1/wineImages", headers = {""})
+    Object getWineImages(@RequestParam("wineId") int wineId);
 }

@@ -104,4 +104,9 @@ public class CollectionController {
         log.info(imageFile.getOriginalFilename());
         return service.addWineImage(headers.get("content-type"), imageFile);
     }
+
+    @GetMapping("/api/v1/wineImages")
+    public Object getWineImages(@RequestParam("wineId") final int wineId) {
+        return service.getWineImages(wineId);
+    }
 }

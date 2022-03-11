@@ -60,8 +60,8 @@ public class CollectionService {
         return client.getWineRatingByUsersByWineId(request);
     }
 
-    public Object addWineImage(final String contentType, final MultipartFile imageFile) {
-        return client.addWineImage(Map.of("content-type", contentType), imageFile);
+    public Object addWineImage(final String contentType, final int wineId, final String label, final MultipartFile imageFile) {
+        return client.addWineImage(Map.of("content-type", contentType), wineId, label, imageFile);
     }
 
     public Object getWineImages(final int wineId) {

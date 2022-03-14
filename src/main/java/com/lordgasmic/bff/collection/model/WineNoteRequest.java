@@ -8,6 +8,6 @@ import java.util.List;
 public class WineNoteRequest {
     private int wineId;
     private String user;
-    private List<String> note;
+    private List<String> wineNotes;
     private String date;
 }

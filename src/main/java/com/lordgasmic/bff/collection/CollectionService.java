@@ -48,8 +48,8 @@ public class CollectionService {
         return client.addWinery(wineryRequest);
     }
 
-    public Object addWineNotes(final List<WineNoteRequest> wineNoteRequests) {
-        return client.addWineNotes(wineNoteRequests);
+    public Object addWineNotes(final WineNoteRequest wineNoteRequest) {
+        return client.addWineNotes(wineNoteRequest);
     }
 
     public Object addWineRating(final WineRatingRequest request) {

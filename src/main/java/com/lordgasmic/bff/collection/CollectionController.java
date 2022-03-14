@@ -74,8 +74,8 @@ public class CollectionController {
     }
 
     @PutMapping("/api/v1/wineNotes")
-    public Object addWineNote(@RequestBody final List<WineNoteRequest> wineNoteRequests) {
-        return service.addWineNotes(wineNoteRequests);
+    public Object addWineNote(@RequestBody final WineNoteRequest wineNoteRequest) {
+        return service.addWineNotes(wineNoteRequest);
     }
 
     /*

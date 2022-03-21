@@ -30,7 +30,7 @@ public class RedisHttpSessionConfiguration {
     public RedisIndexedSessionRepository sessionRepository() {
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         final RedisIndexedSessionRepository sessionRepository = new RedisIndexedSessionRepository(redisTemplate);
-        sessionRepository.setDefaultMaxInactiveInterval(5400);
+        sessionRepository.setDefaultMaxInactiveInterval(7200);
         sessionRepository.setRedisKeyNamespace("webbff");
         return sessionRepository;
     }

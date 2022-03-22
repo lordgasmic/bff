@@ -1,4 +1,4 @@
-package com.lordgasmic.bff.login;
+package com.lordgasmic.bff.dom;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

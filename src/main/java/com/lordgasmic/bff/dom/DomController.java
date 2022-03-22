@@ -2,7 +2,6 @@ package com.lordgasmic.bff.dom;
 
 import com.lordgasmic.bff.collection.CollectionService;
 import com.lordgasmic.bff.dom.model.WineNoteOutput;
-import com.lordgasmic.bff.dom.model.WineResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -34,8 +34,8 @@ public class DomController {
     @ResponseBody
     public String wineAsDom() {
         final CompletableFuture<String> wineFuture = CompletableFuture.supplyAsync(() -> collectionService.getWines("1", null))
-                                                                      .thenApply(response -> (WineResponse) response)
-                                                                      .thenApply(WineResponse::getName);
+                                                                      .thenApply(response -> (LinkedHashMap) response)
+                                                                      .thenApply(map -> (String) map.get("name"));
         final CompletableFuture<String> wineRatingFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineRating("lordgasmic", 1))
                                                                             .thenApply((responseList) -> responseList.stream()
                                                                                                                      .map(response -> StringUtils.replace(

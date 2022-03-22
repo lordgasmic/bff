@@ -66,7 +66,7 @@ public class DomController {
         wineHtml = StringUtils.replace(wineHtml, "{{wine-notes}}", wineNotes);
 
         String html = resourceService.getHtml().get("index");
-        html = StringUtils.replace(html, "{{header}}", resourceService.getHtml().get("wine-header"));
+        html = StringUtils.replace(html, "{{header}}", resourceService.getHtml().get("wineHeader"));
         html = StringUtils.replace(html, "{{body}}", wineHtml);
 
         return html;

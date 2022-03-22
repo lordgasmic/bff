@@ -40,7 +40,7 @@ public class ResourceService {
     @PostConstruct
     public void init() throws IOException {
         for (final String path : classpaths.keySet()) {
-            final Resource resource = resourceLoader.getResource(path);
+            final Resource resource = resourceLoader.getResource(classpaths.get(path));
             final BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()));
             final StringBuilder sb = new StringBuilder();
             br.lines().forEach(sb::append);

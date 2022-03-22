@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DomController {
 
-    @GetMapping(value = "/api/v1/dom", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/dom/v1/hi", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String indexAsDom() {
         return "<html><body>hi</body></html>";

@@ -20,7 +20,7 @@ public class ResourceService {
 
     @PostConstruct
     public void init() throws IOException {
-        final Resource resource = resourceLoader.getResource("classpath:derp.text");
+        final Resource resource = resourceLoader.getResource("classpath:BOOT-INF/classes/derp.text");
         final BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()));
         br.lines().forEach(log::info);
         br.close();

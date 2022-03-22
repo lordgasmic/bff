@@ -25,9 +25,9 @@ public class ResourceService {
 
     static {
         classpaths.put("index", "classpath:dom/index.html");
-        //        classpaths.put("wine", "classpath:dom/wine.html");
-        //        classpaths.put("wineHeader", "classpath:dom/wine-header.html");
-        //        classpaths.put("li", "classpath:dom/li.elm");
+        classpaths.put("wine", "classpath:dom/wine.html");
+        classpaths.put("wineHeader", "classpath:dom/wine-header.html");
+        classpaths.put("li", "classpath:dom/li.elm");
     }
 
     @Getter

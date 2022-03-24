@@ -35,19 +35,19 @@ public class DomController {
         return "<html><body>hi</body></html>";
     }
 
-    @GetMapping(value = "/dom/v1/wine/{{id}}", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/dom/v1/wine/{id}", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public String wineAsDom(@PathVariable final int id) {
+    public String wineAsDom(@PathVariable final String id) {
+        final int wineId = Integer.parseInt(id);
         final String username = sessionManager.getSessionDetails().getUsername();
-        final CompletableFuture<Map<String, Object>> wineFuture = CompletableFuture.supplyAsync(() -> collectionService.getWines(String.valueOf(id),
-                                                                                                                                 null))
+        final CompletableFuture<Map<String, Object>> wineFuture = CompletableFuture.supplyAsync(() -> collectionService.getWines(id, null))
                                                                                    .thenApply(response -> (Map<String, Object>) response);
-        final CompletableFuture<String> wineRatingFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineRating(username, id))
+        final CompletableFuture<String> wineRatingFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineRating(username, wineId))
                                                                             .thenApply((responseList) -> responseList.stream()
                                                                                                                      .map(response -> renderLi(
                                                                                                                              response.formatRating()))
                                                                                                                      .collect(Collectors.joining()));
-        final CompletableFuture<String> wineNotesFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineNotes(username, id))
+        final CompletableFuture<String> wineNotesFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineNotes(username, wineId))
                                                                            .thenApply((response) -> response.getWineNotes()
                                                                                                             .stream()
                                                                                                             .sorted(Comparator.comparing(

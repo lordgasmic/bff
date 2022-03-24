@@ -57,8 +57,8 @@ public class DomController {
 
         final Map<String, Object> wineMap = wineFuture.join();
 
-        final CompletableFuture<Map<String, Object>> wineryFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineryById((String) wineMap.get(
-                "wineryId"))).thenApply(response -> (Map<String, Object>) response);
+        final CompletableFuture<Map<String, Object>> wineryFuture = CompletableFuture.supplyAsync(() -> collectionService.getWineryById(((Integer) wineMap.get(
+                "wineryId")).toString())).thenApply(response -> (Map<String, Object>) response);
 
         final String wineRating = wineRatingFuture.join();
         final String wineNotes = wineNotesFuture.join();

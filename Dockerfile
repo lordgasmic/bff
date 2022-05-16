@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM lordgasmic/jre14
 WORKDIR /app
 
 COPY target/*.jar app.jar

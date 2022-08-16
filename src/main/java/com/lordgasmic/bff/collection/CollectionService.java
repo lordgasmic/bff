@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.GasRequest;
 import com.lordgasmic.bff.collection.model.WineFriendsRequest;
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
@@ -68,5 +69,9 @@ public class CollectionService {
 
     public Object getWineImages(final int wineId) {
         return client.getWineImages(wineId);
+    }
+
+    public Object addGas(final GasRequest request) {
+        return client.addGas(request);
     }
 }

@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.collection;
 
+import com.lordgasmic.bff.collection.model.GasRequest;
 import com.lordgasmic.bff.collection.model.WineFriendsRequest;
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
@@ -63,4 +64,7 @@ public interface CollectionClient {
 
     @GetMapping(value = "/api/v1/wineImages", headers = {""})
     Object getWineImages(@RequestParam("wineId") int wineId);
+
+    @PutMapping(value = "/api/v1/gas", headers = {""})
+    Object addGas(@RequestBody GasRequest request);
 }

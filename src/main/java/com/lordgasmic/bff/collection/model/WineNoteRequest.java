@@ -9,5 +9,6 @@ public class WineNoteRequest {
     private int wineId;
     private String user;
     private List<String> wineNotes;
+    private List<WineNoteUpsert> upsert;
     private String date;
 }

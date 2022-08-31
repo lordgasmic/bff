@@ -10,7 +10,6 @@ import com.lordgasmic.bff.collection.model.WineryRequest;
 import com.lordgasmic.bff.session.SessionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -94,7 +93,7 @@ public class CollectionController {
         return service.addWineRating(request);
     }
 
-    @PatchMapping("/api/v1/wineRating")
+    @PutMapping("/api/v1/wineRating")
     public Object editWineRating(@RequestBody final WineRatingEditRequest request) {
         return service.editWineRating(request);
     }

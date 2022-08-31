@@ -3,6 +3,7 @@ package com.lordgasmic.bff.collection;
 import com.lordgasmic.bff.collection.model.GasRequest;
 import com.lordgasmic.bff.collection.model.WineFriendsRequest;
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
+import com.lordgasmic.bff.collection.model.WineRatingEditRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
@@ -11,6 +12,7 @@ import com.lordgasmic.bff.dom.model.WineRatingResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -52,6 +54,9 @@ public interface CollectionClient {
 
     @PutMapping(value = "/api/v1/wineRating", headers = {""})
     Object addWineRating(@RequestBody WineRatingRequest request);
+
+    @PatchMapping(value = "/api/v1/wineRating", headers = {""})
+    Object editWineRating(@RequestBody WineRatingEditRequest request);
 
     @PostMapping(value = "/api/v1/wineRating", headers = {""})
     Object getWineRatingByUsersByWineId(@RequestBody WineFriendsRequest request);

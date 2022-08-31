@@ -3,6 +3,7 @@ package com.lordgasmic.bff.collection;
 import com.lordgasmic.bff.collection.model.GasRequest;
 import com.lordgasmic.bff.collection.model.WineFriendsRequest;
 import com.lordgasmic.bff.collection.model.WineNoteRequest;
+import com.lordgasmic.bff.collection.model.WineRatingEditRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
@@ -57,6 +58,10 @@ public class CollectionService {
 
     public Object addWineRating(final WineRatingRequest request) {
         return client.addWineRating(request);
+    }
+
+    public Object editWineRating(final WineRatingEditRequest request) {
+        return client.editWineRating(request);
     }
 
     public Object getWineFriends(final WineFriendsRequest request) {

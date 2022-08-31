@@ -54,7 +54,7 @@ public interface CollectionClient {
     @PutMapping(value = "/api/v1/wineRating", headers = {""})
     Object addWineRating(@RequestBody WineRatingRequest request);
 
-    @PutMapping(value = "/api/v1/wineRating", headers = {""})
+    @PutMapping(value = "/api/v1/wineRating/edit", headers = {""})
     Object editWineRating(@RequestBody WineRatingEditRequest request);
 
     @PostMapping(value = "/api/v1/wineRating", headers = {""})

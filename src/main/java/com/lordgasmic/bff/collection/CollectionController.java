@@ -93,7 +93,7 @@ public class CollectionController {
         return service.addWineRating(request);
     }
 
-    @PutMapping("/api/v1/wineRating")
+    @PutMapping("/api/v1/wineRating/edit")
     public Object editWineRating(@RequestBody final WineRatingEditRequest request) {
         return service.editWineRating(request);
     }

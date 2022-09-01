@@ -2,7 +2,6 @@ package com.lordgasmic.bff.meme;
 
 import com.lordgasmic.bff.meme.model.CreateMemeRequest;
 import com.lordgasmic.bff.meme.model.MemeRequestRequest;
-import com.lordgasmic.bff.meme.model.MemeResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +15,11 @@ public class MemeService {
         this.client = client;
     }
 
-    public List<MemeResponse> getAllMemes() {
+    public List<Object> getAllMemes() {
         return client.getAllMemes();
     }
 
-    public List<MemeResponse> getMemes(final String tag) {
+    public List<Object> getMemes(final String tag) {
         return client.getMemes(tag);
     }
 

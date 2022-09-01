@@ -2,7 +2,6 @@ package com.lordgasmic.bff.meme;
 
 import com.lordgasmic.bff.meme.model.CreateMemeRequest;
 import com.lordgasmic.bff.meme.model.MemeRequestRequest;
-import com.lordgasmic.bff.meme.model.MemeResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +13,10 @@ import java.util.List;
 public interface MemeClient {
 
     @GetMapping(value = "/api/v1/memes/all", headers = {""})
-    List<MemeResponse> getAllMemes();
+    List<Object> getAllMemes();
 
     @GetMapping(value = "/api/v1/memes/tag/{tag}", headers = {""})
-    List<MemeResponse> getMemes(@PathVariable("tag") String tag);
+    List<Object> getMemes(@PathVariable("tag") String tag);
 
     @PutMapping(value = "/api/v1/meme", headers = {""})
     Object addMeme(CreateMemeRequest request);

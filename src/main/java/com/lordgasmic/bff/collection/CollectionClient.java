@@ -71,4 +71,7 @@ public interface CollectionClient {
 
     @PutMapping(value = "/api/v1/gas", headers = {""})
     Object addGas(@RequestBody GasRequest request);
+
+    @GetMapping(value = "/api/v1/gas", headers = {""})
+    Object getGas(@RequestParam String vehicle);
 }

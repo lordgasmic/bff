@@ -123,4 +123,9 @@ public class CollectionController {
     public Object addGas(@RequestBody final GasRequest request) {
         return service.addGas(request);
     }
+
+    @GetMapping("/api/v1/gas")
+    public Object getGas(@RequestParam final String vehicle) {
+        return service.getGas(vehicle);
+    }
 }

@@ -79,4 +79,8 @@ public class CollectionService {
     public Object addGas(final GasRequest request) {
         return client.addGas(request);
     }
+
+    public Object getGas(final String vehicle) {
+        return client.getGas(vehicle);
+    }
 }

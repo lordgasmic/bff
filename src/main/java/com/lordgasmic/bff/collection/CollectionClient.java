@@ -74,4 +74,19 @@ public interface CollectionClient {
 
     @GetMapping(value = "/api/v1/gas", headers = {""})
     Object getGas(@RequestParam String vehicle);
+
+    @GetMapping(value = "/api/v1/recipe", headers = {""})
+    Object getAllRecipes();
+
+    @GetMapping(value = "/api/v1/recipe/{id}", headers = {""})
+    Object getRecipe(@PathVariable("id") int id);
+
+    @GetMapping(value = "/api/v1/ingredients/{recipeId}", headers = {""})
+    Object getIngredientsForRecipeId(@PathVariable("recipeId") int recipeId);
+
+    @GetMapping(value = "/api/v1/direction/{recipeId}", headers = {""})
+    Object getDirectionsForRecipeId(@PathVariable("recipeId") int recipeId);
+
+    @GetMapping(value = "/api/v1/tag/{recipeId}", headers = {""})
+    Object getTagsForRecipeId(@PathVariable("recipeId") int recipeId);
 }

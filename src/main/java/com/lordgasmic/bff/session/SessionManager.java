@@ -18,10 +18,12 @@ public class SessionManager {
     @Autowired
     private HttpServletRequest httpServletRequest;
 
-    private static final Map<String, Object> SESSION_MAP = new HashMap<>();
+    private static final Map<String, SessionDetails> SESSION_MAP = new HashMap<>();
 
     public SessionDetails getSessionDetails(String token) {
-        return (SessionDetails) SESSION_MAP.get(token);
+        log.info("token: " + token);
+        log.info("session details: " + SESSION_MAP.get(token));
+        return SESSION_MAP.get(token);
     }
 
     public String handleLogin(final SessionDetails sessionDetails) {

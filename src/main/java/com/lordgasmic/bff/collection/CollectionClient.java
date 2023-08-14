@@ -7,8 +7,6 @@ import com.lordgasmic.bff.collection.model.WineRatingEditRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
-import com.lordgasmic.bff.dom.model.WineNoteResponse;
-import com.lordgasmic.bff.dom.model.WineRatingResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,10 +35,10 @@ public interface CollectionClient {
     Object getWines(@RequestParam("wineId") String wineId, @RequestParam("wineryId") String wineryId);
 
     @GetMapping(value = "/api/v1/wineNotes", headers = {""})
-    WineNoteResponse getWineNotes(@RequestParam("user") String user, @RequestParam("wineId") Integer wineID);
+    Object getWineNotes(@RequestParam("user") String user, @RequestParam("wineId") Integer wineID);
 
     @GetMapping(value = "/api/v1/wineRating", headers = {""})
-    List<WineRatingResponse> getWineRating(@RequestParam("user") String user, @RequestParam("wineId") Integer wineId);
+    List<Object> getWineRating(@RequestParam("user") String user, @RequestParam("wineId") Integer wineId);
 
     @PutMapping(value = "/api/v1/wines", headers = {""})
     Object addWine(@RequestBody WineRequest wineRequest);

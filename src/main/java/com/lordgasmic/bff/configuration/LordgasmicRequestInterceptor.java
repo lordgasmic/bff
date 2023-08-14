@@ -24,7 +24,9 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
-        final SessionDetails details = sessionManager.getSessionDetails();
+        String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
+
+        final SessionDetails details = sessionManager.getSessionDetails(token);
         if (details == null) {
             response.setStatus(401);
             return false;

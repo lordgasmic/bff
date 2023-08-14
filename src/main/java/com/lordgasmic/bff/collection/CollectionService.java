@@ -7,8 +7,6 @@ import com.lordgasmic.bff.collection.model.WineRatingEditRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
-import com.lordgasmic.bff.dom.model.WineNoteResponse;
-import com.lordgasmic.bff.dom.model.WineRatingResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,11 +34,11 @@ public class CollectionService {
         return client.getWines(wineId, wineryId);
     }
 
-    public WineNoteResponse getWineNotes(final String user, final Integer wineId) {
+    public Object getWineNotes(final String user, final Integer wineId) {
         return client.getWineNotes(user, wineId);
     }
 
-    public List<WineRatingResponse> getWineRating(final String user, final Integer wineId) {
+    public List<Object> getWineRating(final String user, final Integer wineId) {
         return client.getWineRating(user, wineId);
     }
 

@@ -1,5 +1,6 @@
 package com.lordgasmic.bff.login;
 
+import com.lordgasmic.bff.login.model.LoginInfo;
 import com.lordgasmic.bff.login.model.LoginRequest;
 import com.lordgasmic.bff.login.model.LoginResponse;
 import com.lordgasmic.bff.session.SessionManager;
@@ -18,20 +19,20 @@ public class LoginService {
         this.sessionManager = sessionManager;
     }
 
-    public Object login(final LoginRequest request) {
+    public LoginInfo login(final LoginRequest request) {
         final LoginResponse response = client.login(request);
 
         if (response.isCredentialsValid() && response.isEnabled()) {
             final SessionDetails sessionDetails = SessionDetailsMapper.fromLoginResponse(response);
-            sessionManager.handleLogin(sessionDetails);
-            return sessionDetails;
+            String token =sessionManager.handleLogin(sessionDetails);
+            return new LoginInfo(token);
         }
 
         return null;
     }
 
-    public void logout() {
-        sessionManager.handleLogout();
+    public void logout(String token) {
+        sessionManager.handleLogout(token);
     }
 
     public Object getUsersByRole(final int role) {

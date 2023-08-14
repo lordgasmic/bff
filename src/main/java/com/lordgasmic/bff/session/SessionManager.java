@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -15,20 +18,29 @@ public class SessionManager {
     @Autowired
     private HttpServletRequest httpServletRequest;
 
-    public SessionDetails getSessionDetails() {
-        return (SessionDetails) httpServletRequest.getSession().getAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
+    private static final Map<String, Object> SESSION_MAP = new HashMap<>();
+
+    public SessionDetails getSessionDetails(String token) {
+        return (SessionDetails) SESSION_MAP.get(token);
     }
 
-    public void handleLogin(final SessionDetails sessionDetails) {
-        httpServletRequest.getSession().invalidate();
-        httpServletRequest.getSession(true);
-        httpServletRequest.getSession().setAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME, sessionDetails);
+    public String handleLogin(final SessionDetails sessionDetails) {
+//        httpServletRequest.getSession().invalidate();
+//        httpServletRequest.getSession(true);
+//        httpServletRequest.getSession().setAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME, sessionDetails);
+
+        String token = UUID.randomUUID().toString();
+        SESSION_MAP.put(token, sessionDetails);
+
+        return token;
     }
 
-    public void handleLogout() {
-        httpServletRequest.getSession().removeAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
-        httpServletRequest.getSession().invalidate();
-        httpServletRequest.getSession(true);
+    public void handleLogout(String token) {
+//        httpServletRequest.getSession().removeAttribute(LordgasmicConstants.SESSION_DETAILS_ATTRIBUTE_NAME);
+//        httpServletRequest.getSession().invalidate();
+//        httpServletRequest.getSession(true);
+
+        SESSION_MAP.remove(token);
     }
 
     public void save(final int id) {

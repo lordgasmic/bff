@@ -1,11 +1,13 @@
 package com.lordgasmic.bff.login;
 
+import com.lordgasmic.bff.configuration.LordgasmicConstants;
 import com.lordgasmic.bff.login.model.LoginRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,8 +29,8 @@ public class LoginController {
     }
 
     @GetMapping("/api/v1/logout")
-    public void logout() {
-        service.logout();
+    public void logout(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) String token) {
+        service.logout(token);
     }
 
     @GetMapping("/api/v1/users")

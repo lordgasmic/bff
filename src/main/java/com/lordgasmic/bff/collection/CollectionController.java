@@ -7,8 +7,10 @@ import com.lordgasmic.bff.collection.model.WineRatingEditRequest;
 import com.lordgasmic.bff.collection.model.WineRatingRequest;
 import com.lordgasmic.bff.collection.model.WineRequest;
 import com.lordgasmic.bff.collection.model.WineryRequest;
+import com.lordgasmic.bff.configuration.LordgasmicConstants;
 import com.lordgasmic.bff.session.SessionManager;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,8 +73,8 @@ public class CollectionController {
     Wine Notes
      */
     @GetMapping("/api/v1/wineNotes")
-    public Object getWineNotes(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
-        return service.getWineNotes(user.orElse(sessionManager.getSessionDetails().getUsername()), wineId.orElse(null));
+    public Object getWineNotes(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) String token, @RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
+        return service.getWineNotes(user.orElse(sessionManager.getSessionDetails(token).getUsername()), wineId.orElse(null));
     }
 
     @PutMapping("/api/v1/wineNotes")
@@ -84,8 +86,8 @@ public class CollectionController {
     Wine Rating
      */
     @GetMapping("/api/v1/wineRating")
-    public Object getWineRating(@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
-        return service.getWineRating(user.orElse(sessionManager.getSessionDetails().getUsername()), wineId.orElse(null));
+    public Object getWineRating(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) String token,@RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
+        return service.getWineRating(user.orElse(sessionManager.getSessionDetails(token).getUsername()), wineId.orElse(null));
     }
 
     @PutMapping("/api/v1/wineRating")

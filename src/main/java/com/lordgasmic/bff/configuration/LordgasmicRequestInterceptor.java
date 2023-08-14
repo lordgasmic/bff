@@ -24,6 +24,10 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
+        log.info("headers:");
+      while(request.getHeaderNames().hasMoreElements()) {
+          log.info(request.getHeaderNames().nextElement());
+      }
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
 
         final SessionDetails details = sessionManager.getSessionDetails(token);

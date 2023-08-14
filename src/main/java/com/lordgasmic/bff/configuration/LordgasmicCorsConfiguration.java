@@ -15,8 +15,8 @@ public class LordgasmicCorsConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedMethods(List.of("OPTIONS", "GET", "POST", "PUT", "DELETE"));
-        corsConfiguration.setAllowedHeaders(List.of("Origin", "authorization", "content-type", "x-auth-token"));
+        corsConfiguration.setAllowedMethods(List.of(CorsConfiguration.ALL));
+        corsConfiguration.setAllowedHeaders(List.of(CorsConfiguration.ALL));
 //        corsConfiguration.applyPermitDefaultValues();
         //        corsConfiguration.addAllowedMethod("PUT");
 //        corsConfiguration.addAllowedMethod("DELETE");

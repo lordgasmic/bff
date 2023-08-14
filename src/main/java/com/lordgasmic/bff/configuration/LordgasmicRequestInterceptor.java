@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,8 +28,9 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         Set<String> headers = new HashSet<>();
-      while(request.getHeaderNames().hasMoreElements()) {
-          headers.add(request.getHeaderNames().nextElement());
+      for(Enumeration<?> e = request.getHeaderNames();e.hasMoreElements();) {
+          headers.add((String) e.nextElement());
+
       }
 
         log.info("headers:"  + headers);

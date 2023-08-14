@@ -6,6 +6,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -14,10 +15,12 @@ public class LordgasmicCorsConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.applyPermitDefaultValues();
-        corsConfiguration.addAllowedMethod("PUT");
-        corsConfiguration.addAllowedMethod("DELETE");
-        //corsConfiguration.setAllowedOrigins(Arrays.asList("https://lordgasmic.com", "http://localhost:4200"));
+        corsConfiguration.setAllowedMethods(List.of(CorsConfiguration.ALL));
+        corsConfiguration.setAllowedHeaders(List.of("authorization", "content-type", "x-auth-token"));
+//        corsConfiguration.applyPermitDefaultValues();
+        //        corsConfiguration.addAllowedMethod("PUT");
+//        corsConfiguration.addAllowedMethod("DELETE");
+//        corsConfiguration.setAllowedOrigins(Arrays.asList("https://lordgasmic.com", "http://localhost:4200"));
         corsConfiguration.setAllowedOrigins(List.of("*"));
 
         final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();

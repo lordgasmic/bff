@@ -12,19 +12,19 @@ import java.util.List;
 @Configuration
 public class LordgasmicCorsConfiguration {
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        final CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedMethods(List.of(CorsConfiguration.ALL));
-        corsConfiguration.setAllowedHeaders(List.of(CorsConfiguration.ALL));
-//        corsConfiguration.applyPermitDefaultValues();
-        //        corsConfiguration.addAllowedMethod("PUT");
-//        corsConfiguration.addAllowedMethod("DELETE");
-//        corsConfiguration.setAllowedOrigins(Arrays.asList("https://lordgasmic.com", "http://localhost:4200"));
-        corsConfiguration.setAllowedOrigins(List.of("*"));
-
-        final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
-        return urlBasedCorsConfigurationSource;
-    }
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        final CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.setAllowedMethods(List.of(CorsConfiguration.ALL));
+//        corsConfiguration.setAllowedHeaders(List.of(CorsConfiguration.ALL));
+////        corsConfiguration.applyPermitDefaultValues();
+//        //        corsConfiguration.addAllowedMethod("PUT");
+////        corsConfiguration.addAllowedMethod("DELETE");
+////        corsConfiguration.setAllowedOrigins(Arrays.asList("https://lordgasmic.com", "http://localhost:4200"));
+//        corsConfiguration.setAllowedOrigins(List.of("*"));
+//
+//        final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+//        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+//        return urlBasedCorsConfigurationSource;
+//    }
 }

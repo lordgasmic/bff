@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.login;
 
 import com.lordgasmic.bff.login.model.LoginRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @Validated
 public class LoginController {
@@ -20,6 +22,7 @@ public class LoginController {
 
     @PostMapping("/api/v1/login")
     public Object login(@RequestBody final LoginRequest request) {
+        log.info("Login request for: " + request);
         return service.login(request);
     }
 

@@ -17,7 +17,7 @@ public class SessionManager {
     }
 
     public SessionDetails getSessionDetails(String token) {
-        return sessionRepository.findByAuthToken(token);
+        return sessionRepository.findById(token).orElse(null);
     }
 
     public String handleLogin(final SessionDetails sessionDetails) {
@@ -30,6 +30,6 @@ public class SessionManager {
     }
 
     public void handleLogout(String token) {
-        sessionRepository.deleteByAuthToken(token);
+        sessionRepository.deleteById(token);
     }
 }

@@ -6,8 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SessionRepository extends CrudRepository<SessionDetails, String> {
-
-    SessionDetails findByAuthToken(String authToken);
-
-    void deleteByAuthToken(String authToken);
 }

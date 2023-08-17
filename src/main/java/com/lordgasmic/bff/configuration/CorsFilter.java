@@ -9,7 +9,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @Component
 public class CorsFilter implements Filter {
@@ -21,7 +20,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", List.of(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN, "Content-Type").toString());
+        response.setHeader("Access-Control-Allow-Headers", LordgasmicConstants.LORDGASMIC_AUTH_TOKEN + ", Content-Type");
         //        response.setHeader("Access-Control-Allow-Headers",
         //                           "Content-Type, Authorization, Content-Length, X-Requested-With, " + LordgasmicConstants.LORDGASMIC_AUTH_TOKEN + ", " + LordgasmicConstants.LORDGASMIC_AUTH_TOKEN.toLowerCase());
         filterChain.doFilter(servletRequest, servletResponse);

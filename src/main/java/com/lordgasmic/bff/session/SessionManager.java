@@ -4,6 +4,7 @@ import com.lordgasmic.bff.session.model.SessionDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -30,6 +31,8 @@ public class SessionManager {
     }
 
     public void handleLogout(String token) {
-        sessionRepository.deleteById(token);
+        Optional<SessionDetails> deets = sessionRepository.findById(token);
+        log.info(deets.toString());
+        deets.ifPresent(sessionRepository::delete);
     }
 }

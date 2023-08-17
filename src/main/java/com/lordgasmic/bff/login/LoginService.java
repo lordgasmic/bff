@@ -24,8 +24,8 @@ public class LoginService {
 
         if (response.isCredentialsValid() && response.isEnabled()) {
             final SessionDetails sessionDetails = SessionDetailsMapper.fromLoginResponse(response);
-            String token =sessionManager.handleLogin(sessionDetails);
-            return new LoginInfo(token);
+            String token = sessionManager.handleLogin(sessionDetails);
+            return new LoginInfo(sessionDetails.getUsername(), sessionDetails.getRoles(), token);
         }
 
         return null;

@@ -9,9 +9,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Set;
 
 @Slf4j
 public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
@@ -32,13 +29,6 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
-        Set<String> headers = new HashSet<>();
-        for (Enumeration<?> e = request.getHeaderNames(); e.hasMoreElements(); ) {
-            headers.add((String) e.nextElement());
-
-        }
-
-        log.info("headers:" + headers);
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
 
         final SessionDetails details = sessionManager.getSessionDetails(token);

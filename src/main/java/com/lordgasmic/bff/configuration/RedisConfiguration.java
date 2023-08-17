@@ -6,8 +6,6 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.concurrent.TimeUnit;
-
 @Configuration
 public class RedisConfiguration {
 
@@ -21,7 +19,6 @@ public class RedisConfiguration {
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
-        template.expire("SessionDetails", 2, TimeUnit.HOURS);
         return template;
     }
 }

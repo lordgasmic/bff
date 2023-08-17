@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@RedisHash("SessionDetails")
+@RedisHash(value = "SessionDetails", timeToLive = 7200)
 public class SessionDetails implements Serializable {
     private String username;
     private int roles;

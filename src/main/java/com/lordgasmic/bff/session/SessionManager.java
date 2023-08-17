@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -28,6 +29,8 @@ public class SessionManager {
     public SessionDetails getSessionDetails(String token) {
         log.info("token: " + token);
         log.info("session details: " + SESSION_MAP.get(token));
+        Optional<Student> s = studentRepository.findById(token);
+        s.ifPresent(student -> log.info("student: " + student));
         return SESSION_MAP.get(token);
     }
 
@@ -42,6 +45,7 @@ public class SessionManager {
         Student s = new Student();
         s.setId(token);
         s.setName(sessionDetails.getUsername());
+        studentRepository.save(s);
 
         return token;
     }

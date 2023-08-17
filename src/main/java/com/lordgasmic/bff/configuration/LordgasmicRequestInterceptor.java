@@ -27,13 +27,18 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
+        if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
+            log.info("OPTIONS preflight found");
+            return true;
+        }
+
         Set<String> headers = new HashSet<>();
-      for(Enumeration<?> e = request.getHeaderNames();e.hasMoreElements();) {
-          headers.add((String) e.nextElement());
+        for (Enumeration<?> e = request.getHeaderNames(); e.hasMoreElements(); ) {
+            headers.add((String) e.nextElement());
 
-      }
+        }
 
-        log.info("headers:"  + headers);
+        log.info("headers:" + headers);
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
 
         final SessionDetails details = sessionManager.getSessionDetails(token);

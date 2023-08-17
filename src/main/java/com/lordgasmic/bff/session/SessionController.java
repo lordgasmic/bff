@@ -3,7 +3,6 @@ package com.lordgasmic.bff.session;
 import com.lordgasmic.bff.configuration.LordgasmicConstants;
 import com.lordgasmic.bff.session.model.SessionDetails;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SessionController {
 
-    @Autowired
-    private SessionManager sessionManager;
+    private final SessionManager sessionManager;
+
+    public SessionController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
 
     @GetMapping("/api/v1/session")
     public SessionDetails getSessionInfo(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) String token) {

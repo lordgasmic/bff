@@ -74,7 +74,7 @@ public class CollectionController {
      */
     @GetMapping("/api/v1/wineNotes")
     public Object getWineNotes(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) String token, @RequestParam("user") final Optional<String> user, @RequestParam("wineId") final Optional<Integer> wineId) {
-        return service.getWineNotes(user.orElse(sessionManager.getSessionDetails(token).getUsername()), wineId.orElse(null));
+        return service.getWineNotes(user.orElse(null), wineId.orElse(null));
     }
 
     @PutMapping("/api/v1/wineNotes")

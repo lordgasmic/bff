@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @Validated
 @Slf4j
@@ -40,5 +42,10 @@ public class MemeController {
     @PutMapping(value = "/api/v1/memes/request")
     public void addMemeRequest(@RequestBody final MemeRequestRequest request) {
         service.addMemeRequest(request);
+    }
+
+    @GetMapping(value = "/api/v1/memes/facets")
+    public List<Object> getFacets() {
+        return service.getFacets();
     }
 }

@@ -30,4 +30,8 @@ public class MemeService {
     public void addMemeRequest(final MemeRequestRequest request) {
         client.addMemeRequest(request);
     }
+
+    public List<Object> getFacets() {
+        return client.getFacets();
+    }
 }

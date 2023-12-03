@@ -24,6 +24,6 @@ public interface MemeClient {
     @PutMapping(value = "/api/v1/memes/request")
     Object addMemeRequest(MemeRequestRequest request);
 
-    @GetMapping(value = "/api/v1/memes/facets")
+    @GetMapping(value = "/api/v1/memes/facets", headers = {""})
     List<Object> getFacets();
 }

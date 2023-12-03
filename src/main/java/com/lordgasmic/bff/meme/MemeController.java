@@ -44,7 +44,7 @@ public class MemeController {
         service.addMemeRequest(request);
     }
 
-    @GetMapping(value = "/api/v1/memes/facets")
+    @GetMapping("/api/v1/memes/facets")
     public List<Object> getFacets() {
         return service.getFacets();
     }

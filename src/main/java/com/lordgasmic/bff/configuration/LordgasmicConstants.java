@@ -10,7 +10,4 @@ public final class LordgasmicConstants {
     private LordgasmicConstants() {
         // intentionally left blank
     }
-
-
-
 }

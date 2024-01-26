@@ -1,10 +1,14 @@
 package com.lordgasmic.bff.slackcommands;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class SlackRequest {
     String token;
     String team_id;

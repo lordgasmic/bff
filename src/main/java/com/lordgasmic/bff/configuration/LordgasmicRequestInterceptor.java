@@ -10,6 +10,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
@@ -30,10 +32,24 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
+        if (request.getServletPath().contains("api/v1/slack-commands")) {
+            List<String> body = request.getReader().lines().collect(Collectors.toList());
+            for (String string : body) {
+                String[] parsedBody = string.split("&");
+                for (String s : parsedBody) {
+                    if (s.contains("token=")) {
+                        if (s.contains("IQM722ANTHK6DwpbnKZcy7op")) {
+                            log.info("Authenticated request for slack commands");
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
         if (token == null) {
-            request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
-            request.getReader().lines().forEach(System.out::println);
             response.setStatus(401);
             return false;
         }
@@ -41,8 +57,6 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         final SessionDetails details = sessionManager.getSessionDetails(token);
         if (details == null) {
             response.setStatus(401);
-            request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
-            request.getReader().lines().forEach(System.out::println);
             return false;
         }
         log.info("session details {}", details);

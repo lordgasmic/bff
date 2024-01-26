@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +35,9 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
 
         if (request.getServletPath().contains("api/v1/slack-commands")) {
             HttpServletRequest customRequest = new CustomHttpServletRequestWrapper(request);
-            List<String> body = customRequest.getReader().lines().collect(Collectors.toList());
+            BufferedReader br = customRequest.getReader();
+            List<String> body = br.lines().collect(Collectors.toList());
+            br.close();
             for (String string : body) {
                 String[] parsedBody = string.split("&");
                 for (String s : parsedBody) {

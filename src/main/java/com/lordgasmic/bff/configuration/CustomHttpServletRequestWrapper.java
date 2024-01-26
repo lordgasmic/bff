@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class CustomHttpServletRequestWrapper extends HttpServletRequestWrapper {
-    private String body;
+    private final String body;
 
     public CustomHttpServletRequestWrapper(HttpServletRequest request) throws IOException {
         super(request);

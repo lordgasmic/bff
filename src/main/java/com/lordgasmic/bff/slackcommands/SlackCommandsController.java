@@ -2,6 +2,7 @@ package com.lordgasmic.bff.slackcommands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,10 @@ public class SlackCommandsController {
     }
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public Object notionScanner(@RequestHeader final Map<String, String> headers, @RequestParam MultiValueMap<String, String> request) {
-        log.info(request.get("text").toString());
+    public Object notionScanner(@RequestHeader final Map<String, String> headers, @RequestParam Map<String, String> request) {
+        log.info(request.get("text"));
+        MultiValueMap<String, String> convertedRequest = new LinkedMultiValueMap<>(request);
         String contentType = headers.get("content-type");
-        return client.notionScanner(Map.of("content-type", contentType), request);
+        return client.notionScanner(Map.of("content-type", contentType), convertedRequest);
     }
 }

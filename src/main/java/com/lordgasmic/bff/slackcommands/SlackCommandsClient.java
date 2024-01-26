@@ -11,5 +11,5 @@ import java.util.Map;
 public interface SlackCommandsClient {
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    Object notionScanner(@RequestHeader Map<String, String> headers);
+    Object notionScanner(@RequestHeader Map<String, String> headers, SlackRequest request);
 }

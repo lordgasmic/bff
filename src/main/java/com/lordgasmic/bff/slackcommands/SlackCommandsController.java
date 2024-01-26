@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 import java.util.Map;
 
-import static javax.xml.crypto.dsig.SignatureMethod.HMAC_SHA512;
+import static javax.xml.crypto.dsig.SignatureMethod.HMAC_SHA256;
 
 @RestController
 @Validated
@@ -39,8 +39,8 @@ public class SlackCommandsController {
     }
 
     private static String calculateHMAC(String data, String key) throws NoSuchAlgorithmException, InvalidKeyException {
-        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), HMAC_SHA512);
-        Mac mac = Mac.getInstance(HMAC_SHA512);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), HMAC_SHA256);
+        Mac mac = Mac.getInstance(HMAC_SHA256);
         mac.init(secretKeySpec);
         return toHexString(mac.doFinal(data.getBytes()));
     }

@@ -6,6 +6,7 @@ import com.lordgasmic.bff.session.model.SessionDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,8 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (request.getServletPath().contains("api/v1/slack-commands")) {
-            List<String> body = request.getReader().lines().collect(Collectors.toList());
+            ContentCachingRequestWrapper cachedRequest = new ContentCachingRequestWrapper(request);
+            List<String> body = cachedRequest.getReader().lines().collect(Collectors.toList());
             for (String string : body) {
                 String[] parsedBody = string.split("&");
                 for (String s : parsedBody) {

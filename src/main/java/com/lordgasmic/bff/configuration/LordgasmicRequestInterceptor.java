@@ -9,10 +9,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Enumeration;
 
 @Slf4j
 public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
@@ -34,22 +32,25 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (request.getServletPath().contains("api/v1/slack-commands")) {
-            request = new CustomHttpServletRequestWrapper(request);
-            BufferedReader br = request.getReader();
-            List<String> body = br.lines().collect(Collectors.toList());
-            br.close();
-            for (String string : body) {
-                String[] parsedBody = string.split("&");
-                for (String s : parsedBody) {
-                    if (s.contains("token=")) {
-                        if (s.contains("IQM722ANTHK6DwpbnKZcy7op")) {
-                            log.info("Authenticated request for slack commands");
-                            return true;
-                        }
-                    }
-                }
+            //            for (String string : body) {
+            //                String[] parsedBody = string.split("&");
+            //                for (String s : parsedBody) {
+            //                    if (s.contains("token=")) {
+            //                        if (s.contains("IQM722ANTHK6DwpbnKZcy7op")) {
+            //                            log.info("Authenticated request for slack commands");
+            //                            return true;
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //            return false;
+
+            Enumeration<String> headers = request.getHeaderNames();
+            while (headers.hasMoreElements()) {
+                String h = headers.nextElement();
+                log.info("header: " + h + ", value: " + request.getHeader(h));
             }
-            return false;
+            return true;
         }
 
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);

@@ -3,7 +3,6 @@ package com.lordgasmic.bff.slackcommands;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +20,8 @@ public class SlackCommandsController {
     }
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public Object notionScanner(@ModelAttribute SlackRequest request) {
-        log.info(request.getText());
-        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), request.convertToFormData());
+    public Object notionScanner(Map<String, String> request) {
+        log.info(request.keySet().toString());
+        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), null);
     }
 }

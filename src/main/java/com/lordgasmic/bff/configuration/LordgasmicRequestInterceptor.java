@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Slf4j
 public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
@@ -17,7 +18,7 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
     private SessionManager sessionManager;
 
     @Override
-    public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler) {
+    public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler) throws IOException {
         log.info("starting preHandle");
         if (request.getServletPath().contains("api/v1/login")) {
             log.info("login handler found");
@@ -34,6 +35,8 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         final SessionDetails details = sessionManager.getSessionDetails(token);
         if (details == null) {
             response.setStatus(401);
+            request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
+            request.getReader().lines().forEach(System.out::println);
             return false;
         }
         log.info("session details {}", details);

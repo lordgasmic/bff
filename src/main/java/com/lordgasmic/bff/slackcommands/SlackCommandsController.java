@@ -20,8 +20,8 @@ public class SlackCommandsController {
     }
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public Object notionScanner(Map<String, String> request) {
-        log.info(request.keySet().toString());
-        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), null);
+    public Object notionScanner(SlackRequest request) {
+        log.info(request.getText());
+        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), request.convertToFormData());
     }
 }

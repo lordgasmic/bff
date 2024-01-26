@@ -50,6 +50,8 @@ public class SlackCommandsController {
         String timestamp = headers.get(X_SLACK_SIGNATURE_TIMESTAMP);
         String data = "v0:" + timestamp + ":" + request;
         String hmac = calculateHMAC(data, SLACK_SIGNING_SECRET);
+        log.info(timestamp);
+        log.info(data);
         log.info(hmac);
         log.info(signature);
     }

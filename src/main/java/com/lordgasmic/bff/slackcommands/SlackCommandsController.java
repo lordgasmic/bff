@@ -21,6 +21,8 @@ import java.util.Map;
 public class SlackCommandsController {
 
     private static final String SLACK_SIGNING_SECRET = "7dfc14b2e7810c268d2ef565878266d5";
+    private static final String X_SLACK_SIGNATURE = "x-slack-signature";
+    private static final String X_SLACK_SIGNATURE_TIMESTAMP = "x-slack-signature-timestamp";
 
     private SlackCommandsClient client;
 
@@ -43,8 +45,11 @@ public class SlackCommandsController {
         return toHexString(mac.doFinal(data.getBytes()));
     }
 
-    private static void verifyRequest(String signature, String request) throws NoSuchAlgorithmException, InvalidKeyException {
-        String hmac = calculateHMAC(request, SLACK_SIGNING_SECRET);
+    private static void verifyRequest(Map<String, String> headers, String request) throws NoSuchAlgorithmException, InvalidKeyException {
+        String signature = headers.get(X_SLACK_SIGNATURE);
+        String timestamp = headers.get(X_SLACK_SIGNATURE_TIMESTAMP);
+        String data = "v0:" + timestamp + ":" + request;
+        String hmac = calculateHMAC(data, SLACK_SIGNING_SECRET);
         log.info(hmac);
         log.info(signature);
     }
@@ -52,7 +57,7 @@ public class SlackCommandsController {
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Object notionScanner(@RequestHeader final Map<String, String> headers,
                                 @RequestBody String request) throws NoSuchAlgorithmException, InvalidKeyException {
-        verifyRequest(headers.get("x-slack-signature"), request);
+        verifyRequest(headers, request);
         log.info(request);
         return null;
         //        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), null);

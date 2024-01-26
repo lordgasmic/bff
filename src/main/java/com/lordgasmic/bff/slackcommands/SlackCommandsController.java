@@ -21,7 +21,8 @@ public class SlackCommandsController {
 
     @PostMapping("/api/v1/slack-commands/notion-scanner")
     public Object notionScanner(@RequestHeader final Map<String, String> headers, SlackRequest request) {
+        log.info(request.getCommand());
         String contentType = headers.get("content-type");
-        return client.notionScanner(Map.of("content-type", contentType), request);
+        return client.notionScanner(Map.of("content-type", contentType), request.convertToFormData());
     }
 }

@@ -22,7 +22,7 @@ public class SlackCommandsController {
 
     private static final String SLACK_SIGNING_SECRET = "7dfc14b2e7810c268d2ef565878266d5";
     private static final String X_SLACK_SIGNATURE = "x-slack-signature";
-    private static final String X_SLACK_SIGNATURE_TIMESTAMP = "x-slack-signature-timestamp";
+    private static final String X_SLACK_SIGNATURE_TIMESTAMP = "x-slack-request-timestamp";
 
     private SlackCommandsClient client;
 

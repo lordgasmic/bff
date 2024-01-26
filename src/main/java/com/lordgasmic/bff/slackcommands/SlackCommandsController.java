@@ -2,9 +2,9 @@ package com.lordgasmic.bff.slackcommands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +22,9 @@ public class SlackCommandsController {
     }
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public Object notionScanner(@RequestHeader final Map<String, String> headers, @RequestBody SlackRequest request) {
-        log.info(request.getCommand());
+    public Object notionScanner(@RequestHeader final Map<String, String> headers, MultiValueMap<String, String> request) {
+        log.info(request.get("text").toString());
         String contentType = headers.get("content-type");
-        return client.notionScanner(Map.of("content-type", contentType), request.convertToFormData());
+        return client.notionScanner(Map.of("content-type", contentType), request);
     }
 }

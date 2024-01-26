@@ -21,7 +21,7 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
     private SessionManager sessionManager;
 
     @Override
-    public boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler) throws IOException {
+    public boolean preHandle(HttpServletRequest request, final HttpServletResponse response, final Object handler) throws IOException {
         log.info("starting preHandle");
         if (request.getServletPath().contains("api/v1/login")) {
             log.info("login handler found");
@@ -34,8 +34,8 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (request.getServletPath().contains("api/v1/slack-commands")) {
-            HttpServletRequest customRequest = new CustomHttpServletRequestWrapper(request);
-            BufferedReader br = customRequest.getReader();
+            request = new CustomHttpServletRequestWrapper(request);
+            BufferedReader br = request.getReader();
             List<String> body = br.lines().collect(Collectors.toList());
             br.close();
             for (String string : body) {

@@ -31,6 +31,12 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
         }
 
         String token = request.getHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN);
+        if (token == null) {
+            request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
+            request.getReader().lines().forEach(System.out::println);
+            response.setStatus(401);
+            return false;
+        }
 
         final SessionDetails details = sessionManager.getSessionDetails(token);
         if (details == null) {

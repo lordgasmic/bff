@@ -61,10 +61,11 @@ public class SlackCommandsController {
                                 @RequestBody String request) throws NoSuchAlgorithmException, InvalidKeyException {
         if (verifyRequest(headers, request)) {
             String[] tokens = request.split("\\&");
-            for (String s : tokens) {
-                log.info(s);
-            }
             MultiValueMap<String, Object> requestMap = new LinkedMultiValueMap<>();
+            for (String s : tokens) {
+                String[] t = s.split("=");
+                requestMap.add(t[0], t[1]);
+            }
             return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), requestMap);
         }
         log.warn("signature did not match hmac.  return null");

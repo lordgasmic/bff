@@ -2,6 +2,8 @@ package com.lordgasmic.bff.slackcommands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,24 +47,27 @@ public class SlackCommandsController {
         return toHexString(mac.doFinal(data.getBytes()));
     }
 
-    private static void verifyRequest(Map<String, String> headers, String request) throws NoSuchAlgorithmException, InvalidKeyException {
+    private static boolean verifyRequest(Map<String, String> headers, String request) throws NoSuchAlgorithmException, InvalidKeyException {
         String signature = headers.get(X_SLACK_SIGNATURE);
         String timestamp = headers.get(X_SLACK_SIGNATURE_TIMESTAMP);
         String data = "v0:" + timestamp + ":" + request;
         String hmac = calculateHMAC(data, SLACK_SIGNING_SECRET);
-        log.info(timestamp);
-        log.info(data);
-        log.info(hmac);
-        log.info(signature);
+        hmac = "v0=" + hmac;
+        return signature.equals(hmac);
     }
 
     @PostMapping(value = "/api/v1/slack-commands/notion-scanner", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Object notionScanner(@RequestHeader final Map<String, String> headers,
                                 @RequestBody String request) throws NoSuchAlgorithmException, InvalidKeyException {
-        verifyRequest(headers, request);
-        log.info(request);
+        if (verifyRequest(headers, request)) {
+            String[] tokens = request.split("\\&");
+            for (String s : tokens) {
+                log.info(s);
+            }
+            MultiValueMap<String, Object> requestMap = new LinkedMultiValueMap<>();
+            return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), requestMap);
+        }
+        log.warn("signature did not match hmac.  return null");
         return null;
-        //        return client.notionScanner(Map.of("content-type", "application/x-www-form-urlencoded"), null);
     }
-
 }

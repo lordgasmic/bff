@@ -23,6 +23,6 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", LordgasmicConstants.LORDGASMIC_AUTH_TOKEN + ", Content-Type");
         //        response.setHeader("Access-Control-Allow-Headers",
         //                           "Content-Type, Authorization, Content-Length, X-Requested-With, " + LordgasmicConstants.LORDGASMIC_AUTH_TOKEN + ", " + LordgasmicConstants.LORDGASMIC_AUTH_TOKEN.toLowerCase());
-        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, response);
     }
 }

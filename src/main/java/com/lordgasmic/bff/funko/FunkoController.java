@@ -18,4 +18,9 @@ public class FunkoController {
     public List<Object> getAllFunkos (){
         return service.getAllFunkos();
     }
+
+    @GetMapping("/api/v1/funkos/extras")
+    public List<Object> getFunkosExtras(){
+        return service.getAllFunkosWithExtras();
+    }
 }

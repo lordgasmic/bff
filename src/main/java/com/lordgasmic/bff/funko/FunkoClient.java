@@ -10,4 +10,7 @@ public interface FunkoClient {
 
     @GetMapping(value = "/api/v1/funkos", headers = {""})
     List<Object> getAllFunkos();
+
+    @GetMapping(value="/api/v1/funkos/extras",headers = {""})
+    List<Object> getAllFunkosWithExtras();
 }

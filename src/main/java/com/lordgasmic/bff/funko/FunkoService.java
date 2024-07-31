@@ -16,4 +16,8 @@ public class FunkoService {
     public List<Object> getAllFunkos() {
         return client.getAllFunkos();
     }
+
+    public List<Object> getAllFunkosWithExtras() {
+        return client.getAllFunkosWithExtras();
+    }
 }

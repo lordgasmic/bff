@@ -20,4 +20,8 @@ public class FunkoService {
     public List<Object> getAllFunkosWithExtras() {
         return client.getAllFunkosWithExtras();
     }
+
+    public Object index(){
+        return client.index();
+    }
 }

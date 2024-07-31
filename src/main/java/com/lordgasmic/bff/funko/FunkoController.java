@@ -1,6 +1,7 @@
 package com.lordgasmic.bff.funko;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,5 +23,10 @@ public class FunkoController {
     @GetMapping("/api/v1/funkos/extras")
     public List<Object> getFunkosExtras(){
         return service.getAllFunkosWithExtras();
+    }
+
+    @PutMapping("/api/v1/index")
+    public Object index() {
+        return service.index();
     }
 }

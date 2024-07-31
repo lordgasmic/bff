@@ -47,6 +47,7 @@ public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
         log.info("session details {}", details);
+        // todo validate user has access to requested role in addition to user
         return details.getUsername() != null && Role.hasRole(Role.user, details.getRoles());
     }
 }

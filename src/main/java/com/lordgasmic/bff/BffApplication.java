@@ -17,18 +17,4 @@ public class BffApplication {
         SpringApplication.run(BffApplication.class, args);
     }
 
-//    @Bean
-//    public LordgasmicRequestInterceptor bffRequestInterceptor() {
-//        return new LordgasmicRequestInterceptor();
-//    }
-//
-//    @Bean
-//    public WebMvcConfigurer adapter() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addInterceptors(final InterceptorRegistry registry) {
-//                registry.addInterceptor(bffRequestInterceptor());
-//            }
-//        };
-//    }
 }

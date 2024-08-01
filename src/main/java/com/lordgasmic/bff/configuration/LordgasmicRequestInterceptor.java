@@ -6,16 +6,20 @@ import com.lordgasmic.bff.session.model.SessionDetails;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.io.IOException;
 
+@Component
 @Slf4j
 public class LordgasmicRequestInterceptor implements HandlerInterceptor {
 
-    @Autowired
-    private SessionManager sessionManager;
+    private final SessionManager sessionManager;
+
+    public LordgasmicRequestInterceptor(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, final HttpServletResponse response, final Object handler) throws IOException {

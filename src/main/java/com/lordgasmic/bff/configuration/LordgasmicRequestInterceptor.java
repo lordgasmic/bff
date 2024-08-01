@@ -3,16 +3,16 @@ package com.lordgasmic.bff.configuration;
 import com.lordgasmic.bff.login.model.Role;
 import com.lordgasmic.bff.session.SessionManager;
 import com.lordgasmic.bff.session.model.SessionDetails;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-public class LordgasmicRequestInterceptor extends HandlerInterceptorAdapter {
+public class LordgasmicRequestInterceptor implements HandlerInterceptor {
 
     @Autowired
     private SessionManager sessionManager;

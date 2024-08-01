@@ -21,10 +21,23 @@
     <description>Lordgasmic Backend for Frontend Application</description>
 
     <properties>
+        <spring-cloud.version>2022.0.3</spring-cloud.version>
         <commons-io-version>2.7</commons-io-version>
         <commons-lang3-version>3.12.0</commons-lang3-version>
         <java.version>17</java.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -34,7 +47,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>3.1.9</version>
+            <!--            <version>3.1.9</version>-->
         </dependency>
         <!--    <dependency>-->
         <!--      <groupId>org.springframework.boot</groupId>-->

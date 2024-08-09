@@ -13,12 +13,8 @@ public class FunkoService {
         this.client = client;
     }
 
-    public List<Object> getAllFunkos() {
-        return client.getAllFunkos();
-    }
-
-    public List<Object> getAllFunkosWithExtras() {
-        return client.getAllFunkosWithExtras();
+    public Object getFunkos() {
+        return client.getFunkos();
     }
 
     public Object index(){

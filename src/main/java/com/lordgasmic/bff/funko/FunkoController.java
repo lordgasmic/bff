@@ -16,13 +16,8 @@ public class FunkoController {
     }
 
     @GetMapping("/api/v1/funkos")
-    public List<Object> getAllFunkos() {
-        return service.getAllFunkos();
-    }
-
-    @GetMapping("/api/v1/funkos/extras")
-    public List<Object> getFunkosExtras() {
-        return service.getAllFunkosWithExtras();
+    public Object getFunkos() {
+        return service.getFunkos();
     }
 
     @PutMapping("/api/v1/funkos")

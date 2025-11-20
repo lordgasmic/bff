@@ -10,5 +10,5 @@ import java.util.Map;
 public class OrderingRequest implements Serializable {
     private String message;
     private PrintType type;
-    private Map<String, List<String>> properties;
+    private Map<String, String[]> properties;
 }

@@ -1,6 +1,6 @@
-package com.lordgasmic.bff.recipe;
+package com.lordgasmic.bff.foodlibrary;
 
-import com.lordgasmic.bff.recipe.models.RecipeResponse;
+import com.lordgasmic.bff.foodlibrary.models.RecipeResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

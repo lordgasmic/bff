@@ -1,4 +1,4 @@
-package com.lordgasmic.bff.recipe.models;
+package com.lordgasmic.bff.foodlibrary.models;
 
 import lombok.Data;
 

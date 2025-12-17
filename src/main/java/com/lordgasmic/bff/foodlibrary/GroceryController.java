@@ -23,12 +23,12 @@ public class GroceryController {
         return ResponseEntity.accepted().build();
     }
 
-    @GetMapping("")
+    @GetMapping("/api/v1/groceries")
     public ResponseEntity<List<GroceryListResponse>> groceryList() {
         return ResponseEntity.ok(service.groceryList());
     }
 
-    @PostMapping("")
+    @PostMapping("/api/v1/groceries")
     public ResponseEntity<Void> printGrocerList() {
         service.printGroceryList();
 

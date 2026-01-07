@@ -18,7 +18,7 @@ public class OrderController {
         this.service = service;
     }
 
-    @PostMapping("/api/v1/orders")
+    @PutMapping("/api/v1/orders")
     public ResponseEntity<Void> send(@RequestHeader(LordgasmicConstants.LORDGASMIC_AUTH_TOKEN) final String token,
                                      @RequestBody final OrderRequest orderingRequest) {
         final String user = sessionManager.getSessionDetails(token).getUsername();

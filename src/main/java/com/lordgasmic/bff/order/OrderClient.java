@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "order-client", url = "${collection-service.url}")
+@FeignClient(name = "order-client", url = "${order-service.url}")
 public interface OrderClient {
 
     @PutMapping(value = "/api/v1/orders", headers = {""})

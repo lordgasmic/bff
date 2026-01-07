@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class Item {
     private String item;
-    private List<Extras> extras;
+    private List<OrderExtra> extras;
 }

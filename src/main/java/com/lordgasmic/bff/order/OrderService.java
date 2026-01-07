@@ -4,6 +4,7 @@ import com.lordgasmic.bff.order.models.Item;
 import com.lordgasmic.bff.order.models.OrderExtra;
 import com.lordgasmic.bff.order.models.OrderRequest;
 import com.lordgasmic.bff.order.models.OrderRequestOutbound;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class OrderService {
 
     private final OrderClient orderClient;
@@ -31,6 +33,7 @@ public class OrderService {
         }
         outbound.setProperties(props);
 
+        log.info("LGC-1ff4fdfe-dee5-4a59-91cd-49642c637a9a: outbound: {}", outbound);
         orderClient.putOrder(outbound);
     }
 

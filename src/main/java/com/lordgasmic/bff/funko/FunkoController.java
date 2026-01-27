@@ -1,11 +1,8 @@
 package com.lordgasmic.bff.funko;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -13,17 +10,25 @@ public class FunkoController {
 
     private final FunkoService service;
 
-    public FunkoController(FunkoService service) {
+    public FunkoController(final FunkoService service) {
         this.service = service;
     }
 
     @GetMapping("/api/v1/funkos")
-    public Object getFunkos(@RequestParam Optional<Integer> start, @RequestParam Optional<Integer> count) {
-        return service.getFunkos(start.orElse(0), count.orElse(10));
+    public ResponseEntity<Object> getFunkos(@RequestParam final Optional<Integer> from, @RequestParam final Optional<Integer> size) {
+        final Object object = service.getFunkos(from.orElse(0), size.orElse(10));
+        return ResponseEntity.ok(object);
     }
 
-    @PutMapping("/api/v1/funkos")
-    public Object index() {
-        return service.index();
+    @GetMapping("/api/v1/funkos/{id}")
+    public ResponseEntity<Object> getFunkos(@PathVariable final String id) {
+        final Object object = service.getFunkoById(id);
+        return ResponseEntity.ok(object);
+    }
+
+    @PostMapping("/api/v1/funkos")
+    public ResponseEntity<Void> index(@RequestBody final FunkoRequest request) {
+        service.addFunko(request);
+        return ResponseEntity.accepted().build();
     }
 }

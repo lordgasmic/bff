@@ -2,22 +2,24 @@ package com.lordgasmic.bff.funko;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class FunkoService {
 
-    private FunkoClient client;
+    private final FunkoClient client;
 
-    public FunkoService(FunkoClient client) {
+    public FunkoService(final FunkoClient client) {
         this.client = client;
     }
 
-    public Object getFunkos(int start, int count) {
+    public Object getFunkos(final int start, final int count) {
         return client.getFunkos(start, count);
     }
 
-    public Object index(){
-        return client.index();
+    public Object getFunkoById(final String id) {
+        return client.getFunkoById(id);
+    }
+
+    public void addFunko(final FunkoRequest request) {
+        client.addFunko(request);
     }
 }

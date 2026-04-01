@@ -21,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: lgc root
+        uses: lordgasmic/actions@master
+      - name: lgc nested
+        uses: lordgasmic/actions/derp@master
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
